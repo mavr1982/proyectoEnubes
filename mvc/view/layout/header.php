@@ -18,8 +18,8 @@
 		<nav class="navDown">
 			<ul>
 				<li><a href="/">Inicio</a></li>
-				<li><a href="usuarios/getUsers">Cine</a></li>
-				<li><a href="#">Deportes</a></li>
+				<li><a href="index.php?c=usuario&a=index">Cine</a></li>
+				<li><a href="index.php?c=noticia&a=index">Deportes</a></li>
 				<li><a href="#">Libros</a></li>
 				<li><a href="#">Música</a></li>					
 			</ul>			

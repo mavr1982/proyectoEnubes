@@ -10,9 +10,9 @@ class UsuarioController{
     }
     
     public function Index(){
-        require_once 'view/header.php';
+        require_once 'view/layout/header.php';
         require_once 'view/usuario/usuario.php';
-        require_once 'view/footer.php';
+        require_once 'view/layout/footer.php';
     }
     
     public function Crud(){

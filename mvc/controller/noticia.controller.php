@@ -10,9 +10,9 @@ class NoticiaController{
     }
     
     public function Index(){
-        require_once 'view/header.php';
+        require_once 'view/layout/header.php';
         require_once 'view/noticia/noticia.php';
-        require_once 'view/footer.php';
+        require_once 'view/layout/footer.php';
     }
     
     public function Crud(){

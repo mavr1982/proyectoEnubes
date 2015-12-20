@@ -23,7 +23,7 @@ class Noticia
 			die($e->getMessage());
 		}
 	}
-
+	
 	public function Listar()
 	{
 		try
@@ -43,19 +43,16 @@ class Noticia
 
 	public function Obtener($id)
 	{
-		try 
-		{
+		try{
 			$stm = $this->pdo
-			          ->prepare("SELECT * FROM noticias WHERE id = ?");
-			          
+			          ->prepare("SELECT * FROM noticias WHERE id = ?");			          
 
 			$stm->execute(array($id));
 			return $stm->fetch(PDO::FETCH_OBJ);
-		} catch (Exception $e) 
-		{
+		} catch (Exception $e){
 			die($e->getMessage());
 		}
-	}
+	}//end function Obtener
 
 	public function Eliminar($id)
 	{
@@ -128,5 +125,18 @@ class Noticia
 		{
 			die($e->getMessage());
 		}
-	}
+	}//end function Registrar
+
+	public function ObtenerUltimaPublica()
+	{
+		try{
+			$stm = $this->pdo
+			          ->prepare("SELECT * FROM noticias WHERE id = (SELECT MAX(id) FROM noticias) AND public=1 AND published=1");			          
+
+			$stm->execute(array($id));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e){
+			die($e->getMessage());
+		}
+	}//end function ObtenerUltimaPublica
 }
