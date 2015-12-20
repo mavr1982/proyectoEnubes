@@ -1,21 +1,25 @@
 <?php
 require_once 'model/noticia.php';
 
-class NoticiaController{
+class NoticiaController
+{
     
     private $model;
     
-    public function __CONSTRUCT(){
+    public function __CONSTRUCT()
+    {
         $this->model = new Noticia();
     }
     
-    public function Index(){
+    public function Index()
+    {
         require_once 'view/layout/header.php';
         require_once 'view/noticia/noticia.php';
         require_once 'view/layout/footer.php';
     }
     
-    public function Crud(){
+    public function Crud()
+    {
         $alm = new Noticia();
         
         if(isset($_REQUEST['id'])){
@@ -27,7 +31,8 @@ class NoticiaController{
         require_once 'view/footer.php';
     }
     
-    public function Guardar(){
+    public function Guardar()
+    {
         $alm = new Noticia();
         
         $alm->id = $_REQUEST['id'];
@@ -46,7 +51,8 @@ class NoticiaController{
         header('Location: index.php');
     }
     
-    public function Eliminar(){
+    public function Eliminar()
+    {
         $this->model->Eliminar($_REQUEST['id']);
         header('Location: index.php');
     }

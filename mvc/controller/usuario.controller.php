@@ -5,17 +5,20 @@ class UsuarioController{
     
     private $model;
     
-    public function __CONSTRUCT(){
+    public function __CONSTRUCT()
+    {
         $this->model = new Usuario();
     }
     
-    public function Index(){
+    public function Index()
+    {
         require_once 'view/layout/header.php';
         require_once 'view/usuario/usuario.php';
         require_once 'view/layout/footer.php';
     }
     
-    public function Crud(){
+    public function Crud()
+    {
         $alm = new Usuario();
         
         if(isset($_REQUEST['id'])){
@@ -27,7 +30,8 @@ class UsuarioController{
         require_once 'view/footer.php';
     }
     
-    public function Guardar(){
+    public function Guardar()
+    {
         $alm = new Usuario();
         
         $alm->id = $_REQUEST['id'];
@@ -44,7 +48,8 @@ class UsuarioController{
         header('Location: index.php');
     }
     
-    public function Eliminar(){
+    public function Eliminar()
+    {
         $this->model->Eliminar($_REQUEST['id']);
         header('Location: index.php');
     }
