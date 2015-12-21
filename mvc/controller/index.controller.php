@@ -2,7 +2,7 @@
 
 require_once 'model/usuario.php';
 require_once 'model/noticia.php';
-require_once 'Simple_sessions.php';
+require_once 'Simple_sessions.php'      ;
 
 class IndexController
 {
@@ -18,13 +18,13 @@ class IndexController
     
     public function Index()
     {
-        require_once 'view/layout/head.php';
-        require_once 'view/layout/header.php';
-        require_once 'view/modals/inicio.php';
-        require_once 'view/modals/registro.php';
-        require_once 'view/layout/index.phtml';
-        require_once 'view/layout/footer.php';
-        require_once 'view/layout/scripts.php';
+        //require_once 'view/layout/head.php';
+        //require_once 'view/layout/header.php';
+        //require_once 'view/modals/inicio.php';
+        //require_once 'view/modals/registro.php';
+        require_once 'view/layout/index.html';
+        //require_once 'view/layout/footer.php';
+        //require_once 'view/layout/scripts.php';
     }
 
     public function login($usuario, $passqord)

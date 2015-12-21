@@ -13,9 +13,10 @@ class NoticiaController
     
     public function Index()
     {
-        require_once 'view/layout/header.php';
-        require_once 'view/noticia/noticia.php';
-        require_once 'view/layout/footer.php';
+        //require_once 'view/layout/header.php';
+        //require_once 'view/noticia/noticia.php';
+        //require_once 'view/layout/footer.php';
+        require_once 'view/layout/index.html';
     }
     
     public function Crud()

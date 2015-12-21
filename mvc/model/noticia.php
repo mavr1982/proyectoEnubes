@@ -131,12 +131,51 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			          ->prepare("SELECT * FROM noticias WHERE id = (SELECT MAX(id) FROM noticias) AND public=1 AND published=1");			          
+			->prepare("SELECT * FROM noticias WHERE id = (SELECT MAX(id) FROM noticias) AND public=1 AND published=1");			          
 
-			$stm->execute(array($id));
+			$stm->execute();
 			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e){
 			die($e->getMessage());
 		}
 	}//end function ObtenerUltimaPublica
+
+	public function ObtenerUltima()
+	{
+		try{
+			$stm = $this->pdo
+			->prepare("SELECT * FROM noticias WHERE id = (SELECT MAX(id) FROM noticias) AND published=1");			          
+
+			$stm->execute();
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e){
+			die($e->getMessage());
+		}
+	}//end function ObtenerUltima
+
+	public function ObtenerUltimaPublicaCategoria($categoria_id)
+	{
+		try{
+			$stm = $this->pdo
+			->prepare("SELECT * FROM noticias WHERE categoria_id = ? AND id = (SELECT MAX(id) FROM noticias) AND public=1 AND published=1");			          
+
+			$stm->execute(array($categoria_id));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e){
+			die($e->getMessage());
+		}
+	}//end function ObtenerUltimaPublicaCategoria
+
+	public function ObtenerUltimaCategoria($categoria_id)
+	{
+		try{
+			$stm = $this->pdo
+			->prepare("SELECT * FROM noticias WHERE categoria_id = ? AND id = (SELECT MAX(id) FROM noticias) AND published=1");			          
+
+			$stm->execute(array($categoria_id));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e){
+			die($e->getMessage());
+		}
+	}//end function ObtenerUltimaPublicaCategoria
 }
