@@ -2,7 +2,7 @@
 
 require_once 'model/usuario.php';
 require_once 'model/noticia.php';
-require_once('Simple_sessions.php');
+require_once 'Simple_sessions.php';
 
 class IndexController
 {
