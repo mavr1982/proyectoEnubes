@@ -183,7 +183,7 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT * FROM noticias WHERE categoria_id = ? AND published=1 ORDER BY id DESC");			          
+			->prepare("SELECT noticias.*, categorias.nombre as nombreCategoria FROM noticias INNER JOIN categorias on noticias.categoria_id=categorias.id WHERE categoria_id = ? AND published=1 ORDER BY id DESC");			          
 
 			$stm->execute(array($categoria_id));
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -204,4 +204,6 @@ class Noticia
 			die($e->getMessage());
 		}
 	}//end function ObtenerUltimaPublicaCategoria
+
+
 }

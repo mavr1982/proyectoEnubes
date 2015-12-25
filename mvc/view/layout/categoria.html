@@ -133,7 +133,7 @@
           <!-- right content column-->
           <div class="col-md-8" id="content">
               <div class="panel">
-          <div class="panel-heading" style="background-color:#111;color:#fff;">TITULARES</div>   
+          <div class="panel-heading" style="background-color:#111;color:#fff;">Noticias de <?php echo $noticias[0]->nombreCategoria; ?></div>   
                 <div class="panel-body">
                   
                   <!-- noticia -->
@@ -155,24 +155,19 @@
                   <p><strong><?php echo $noticias[0]->entradilla; ?></strong></p>
                 </div>  
                 <!-- noticia --> 
+                </div>
 
                   <?php for ($i=1; $i < count($noticias); $i++):?>
-                <div class="row">
+                      <div class="row">
                         <div class="col-md-12 text-justify">
-                        <a href="?c=noticia&a=noticia&id=<?php echo $noticias[$i]->id; ?>">
-                          <p class="text-justify"><strong><?php echo $noticias[$i]->titular; ?></strong></p>
-                          <p><?php echo $noticias[$i]->entradilla; ?></p></a>
+                          <a href="?c=noticia&a=noticia&id=<?php echo $noticias[$i]->id; ?>">
+                            <p><strong><?php echo $noticias[$i]->titular; ?></strong></p>
+                            <p><?php echo $noticias[$i]->entradilla; ?></p></a>
                         </div>
                       </div>                
                  <?php endfor; ?> 
                   <hr>
-                  
-                   
-                                  
-                  
-                 
-                    
-                  
+
                   <div class="row">
                     <div class="col-md-3 col-sm-6 col-6">
                       <a href="#"><img src="//placehold.it/600X200/EDEDED" class="img-responsive"></a>
@@ -217,38 +212,38 @@
                 <div class="panel-heading" style="background-color:#888;color:#fff;">Categorías</div> 
                 <div class="panel-body">
       			    <div class="media">
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="?c=noticia&a=categoria&id=1">
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="#"><strong>CINE</strong></a></h5>
+                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=1"><strong>CINE</strong></a></h5>
                       <small>Reseñas de cine de hoy y siempre.</small><br>
                     </div>
                   </div>
                   <div class="media">
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="?c=noticia&a=categoria&id=4">
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="#"><strong>DEPORTES</strong></a></h5>
+                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=4"><strong>DEPORTES</strong></a></h5>
                       <small>Todos los deportes, no solo fútbol.</small><br>
                     </div>
                   </div>
                   <div class="media">
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="?c=noticia&a=categoria&id=3">
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="#"><strong>LIBROS</strong></a></h5>
+                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=3"><strong>LIBROS</strong></a></h5>
                       <small>Leer nos hace libres.</small><br>
                     </div>
                   </div>
                   <div class="media">
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="?c=noticia&a=categoria&id=2">
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="#"><strong>MÚSICA</strong></a></h5>
+                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=2"><strong>MÚSICA</strong></a></h5>
                       <small>Sin música la vida sería un error.</small><br>
                     </div>
                   </div>
