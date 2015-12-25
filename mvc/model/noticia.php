@@ -131,7 +131,7 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT * FROM noticias WHERE id = (SELECT MAX(id) FROM noticias) AND public=1 AND published=1");			          
+			->prepare("SELECT * FROM noticias WHERE public=1 AND published=1 ORDER BY id DESC LIMIT 1");			          
 
 			$stm->execute();
 			return $stm->fetch(PDO::FETCH_OBJ);
@@ -144,7 +144,7 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT * FROM noticias WHERE id = (SELECT MAX(id) FROM noticias) AND published=1");			          
+			->prepare("SELECT * FROM noticias WHERE published=1 ");			          
 
 			$stm->execute();
 			return $stm->fetch(PDO::FETCH_OBJ);
@@ -157,7 +157,7 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT * FROM noticias WHERE categoria_id = ? AND id = (SELECT MAX(id) FROM noticias) AND public=1 AND published=1");			          
+			->prepare("SELECT * FROM noticias WHERE categoria_id = ? AND public=1 AND published=1 ORDER BY id DESC LIMIT 1");			          
 
 			$stm->execute(array($categoria_id));
 			return $stm->fetch(PDO::FETCH_OBJ);
@@ -170,9 +170,35 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT * FROM noticias WHERE categoria_id = ? AND id = (SELECT MAX(id) FROM noticias) AND published=1");			          
+			->prepare("SELECT * FROM noticias WHERE categoria_id = ? AND published=1 ORDER BY id DESC LIMIT 1");			          
 
 			$stm->execute(array($categoria_id));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e){
+			die($e->getMessage());
+		}
+	}//end function ObtenerUltimaPublicaCategoria
+
+	public function ObtenerTodasCategoria($categoria_id)
+	{
+		try{
+			$stm = $this->pdo
+			->prepare("SELECT * FROM noticias WHERE categoria_id = ? AND published=1 ORDER BY id DESC");			          
+
+			$stm->execute(array($categoria_id));
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		} catch (Exception $e){
+			die($e->getMessage());
+		}
+	}//end function ObtenerUltimaPublicaCategoria
+
+	public function ObtenerNoticia($id)
+	{
+		try{
+			$stm = $this->pdo
+			->prepare("SELECT * FROM noticias WHERE id = ?");			          
+
+			$stm->execute(array($id));
 			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e){
 			die($e->getMessage());

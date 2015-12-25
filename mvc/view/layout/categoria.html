@@ -136,186 +136,42 @@
           <div class="panel-heading" style="background-color:#111;color:#fff;">TITULARES</div>   
                 <div class="panel-body">
                   
-                  
-                  <!-- ultima noticia -->
+                  <!-- noticia -->
                   <div class="row">
                   <div class="col-md-12">
-                    <a href="?c=noticia&a=noticia&id=<?php echo $ultimaNoticia->id; ?>"><img src="<?php echo $ultimaNoticia->imagen; ?>" class="img-responsive"></a>
+                    <a href="#"><img src="<?php echo $noticias[0]->imagen; ?>" class="img-responsive"></a>
                   </div>
                    
                   <div class="col-md-12 text-justify">
-                    <a href="?c=noticia&a=noticia&id=<?php echo $ultimaNoticia->id; ?>"><p id="fittext1">
-                    <strong><?php echo $ultimaNoticia->titular; ?></strong>
-                    </p></a>
+                    <p id="fittext1">
+                    <strong><?php echo $noticias[0]->titular; ?></strong>
+                    </p>
                     
-                    <div class="text-muted"><small><?php echo $ultimaNoticia->fecha; ?> / Wilson Traiker</small></div>                    
-                  </div>   
-                
-                <div class="col-md-12 text-justify"> 
-                  <a href="?c=noticia&a=noticia&id=<?php echo $ultimaNoticia->id; ?>"><?php echo $ultimaNoticia->entradilla; ?></a>
-                </div>
-                </div><!-- ultima noticia -->                 
-                  
-                  <hr>
-                  
-                  <div class="well text-center"> 
-                    <h1>Espacio para banner de publicidad</h1>
-                    Donec lectus nunc, pretium eget nisi eget, sodales blandit augue. 
-                    <br><br>
-                    <div style="font-size:70pt">
-                      <i class="glyphicon glyphicon-4x glyphicon-camera"></i>
-                      <i class="glyphicon glyphicon-4x glyphicon-camera"></i>
-                      <i class="glyphicon glyphicon-4x glyphicon-camera"></i>
-                    </div>
-                    
-                  </div>
-                  
-                  <hr>
-                  
-                  <!--modulo deportes -->
-                  <h2 class="text-center"><strong>Deportes</strong></h2>
-                  <a href="?c=noticia&a=noticia&id=<?php echo $deportes[0]->id; ?>">
-                  <h3><?php echo $deportes[0]->titular; ?></h3>
-                  <div class="row">
-                  <div class="col-md-9 text-justify">
-                  <?php echo $deportes[0]->entradilla; ?>
-                  </div>
-                  <div class="col-md-3"> 
-                  <img src="<?php echo $deportes[0]->imagen; ?>" class=" img-responsive thumbnail pull-right">
-                  </div>
-                  </div>
-                  </a>
-                  <hr>
+                    <div class="text-muted"><p><small><?php echo $noticias[0]->fecha; ?> / Wilson Traiker</small></p>
+                    </div>                    
+                  </div> 
 
-                  <div class="row">
-                  <div class="col-md-6 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $deportes[1]->id; ?>">
-                  <img src="<?php echo $deportes[1]->imagen; ?>" class=" img-responsive thumbnail pull-right">
-                  <p class="text-center"><strong><?php echo $deportes[1]->titular; ?></strong></p>
-                  <p><?php echo $deportes[1]->entradilla; ?></p>
-                  </a>
-                  </div>
-                  <div class="col-md-3 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $deportes[2]->id; ?>">
-                  <p class="text-center"><strong><?php echo $deportes[2]->titular; ?></strong></p>
-                  <p><?php echo $deportes[2]->entradilla; ?></p>
-                  </a>
-                  </div>
-                  <div class="col-md-3 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $deportes[3]->id; ?>">
-                  <p class="text-center"><strong><?php echo $deportes[3]->titular; ?></strong></p>
-                  <p><?php echo $deportes[3]->entradilla; ?></p>
-                  </a>
-                  </div>
-                  </div>
-                  <hr>
-                  <!--modulo deportes -->
-                  <!--modulo cine -->                  
-                  <h2 class="text-center"><strong>Cine</strong></h2>
-                  <a href="?c=noticia&a=noticia&id=<?php echo $cine[0]->id; ?>">
-                  <h3><?php echo $cine[0]->titular; ?></h3>
-                  <div class="row">
-                  <div class="col-md-9 text-justify">
-                  <?php echo $cine[0]->entradilla; ?>
-                  </div>
-                  <div class="col-md-3"> 
-                  <img src="<?php echo $cine[0]->imagen; ?>" class=" img-responsive thumbnail pull-right">
-                  </div>
-                  </div>
-                  </div>
-                  <hr>
+                  <div class="col-md-12 text-justify"> 
+                  <p><strong><?php echo $noticias[0]->entradilla; ?></strong></p>
+                </div>  
+                <!-- noticia --> 
 
-                  <div class="row">
-                  <div class="col-md-6 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $cine[1]->id; ?>">
-                  <p class="text-center"><strong><?php echo $cine[1]->titular; ?></strong></p>
-                  <p><?php echo $cine[1]->entradilla; ?></p></a>
-                  </div>
-                  <div class="col-md-6 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $cine[2]->id; ?>">
-                  <p class="text-center"><strong><?php echo $cine[2]->titular; ?></strong></p>
-                  <p><?php echo $cine[2]->entradilla; ?></p></a>
-                  </div>
-                  </div>
+                  <?php for ($i=1; $i < count($noticias); $i++):?>
+                <div class="row">
+                        <div class="col-md-12 text-justify">
+                        <a href="?c=noticia&a=noticia&id=<?php echo $noticias[$i]->id; ?>">
+                          <p class="text-justify"><strong><?php echo $noticias[$i]->titular; ?></strong></p>
+                          <p><?php echo $noticias[$i]->entradilla; ?></p></a>
+                        </div>
+                      </div>                
+                 <?php endfor; ?> 
                   <hr>
-                  <!--modulo cine -->
-                  <div class="well"> 
-                    <h1>ESPACIO PARA BANER DE PUBLICIDAD</h1>
-                    Suspendisse vel elit ut leo interdum venenatis. Praesent eget tortor fermentum diam sodales pulvinar
-                  </div>
-                  <!--modulo libros -->
                   
-                  <h2 class="text-center"><strong>Libros</strong></h2>
-                  <a href="?c=noticia&a=noticia&id=<?php echo $libros[0]->id; ?>">
-                  <h3><?php echo $libros[0]->titular; ?></h3>
-                  <div class="row">
-                  <div class="col-md-7 text-justify">
-                  <?php echo $libros[0]->entradilla; ?>
-                  </div>
-                  <div class="col-md-5"> 
-                  <img src="<?php echo $libros[0]->imagen; ?>" class=" img-responsive thumbnail pull-right"></a>
-                  </div>
-                  </div>
-                  <hr>
-
-                  <div class="row">
-                  <div class="col-md-3 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $libros[1]->id; ?>">
-                  <img src="<?php echo $libros[1]->imagen; ?>" class=" img-responsive thumbnail pull-right">
-                  <p class="text-center"><strong><?php echo $libros[1]->titular; ?></strong></p>
-                  <p><?php echo $libros[1]->entradilla; ?></p></a>
-                  </div>
-                  <div class="col-md-3 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $libros[2]->id; ?>">
-                  <p class="text-center"><strong><?php echo $libros[2]->titular; ?></strong></p>
-                  <p><?php echo $libros[2]->entradilla; ?></p>
-                  <img src="<?php echo $libros[2]->imagen; ?>" class=" img-responsive thumbnail pull-right"></a>
-                  </div>
-                  <div class="col-md-3 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $libros[3]->id; ?>">
-                  <img src="<?php echo $libros[3]->imagen; ?>" class=" img-responsive thumbnail pull-right">
-                  <p class="text-center"><strong><?php echo $libros[3]->titular; ?></strong></p>
-                  <p><?php echo $libros[3]->entradilla; ?></p></a>
-                  </div>
-                  <div class="col-md-3 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $libros[4]->id; ?>">
-                  <p class="text-center"><strong><?php echo $libros[4]->titular; ?></strong></p>
-                  <p><?php echo $libros[4]->entradilla; ?></p></a>
-                  </div>
-                  </div>
-                  <hr>
-                  <!--modulo libros -->
-                  <!--modulo musica -->
+                   
+                                  
                   
-                  <h2 class="text-center"><strong>Música</strong></h2>
-                  <a href="?c=noticia&a=noticia&id=<?php echo $musica[0]->id; ?>">
-                  <h3><?php echo $musica[0]->titular; ?></h3>
-                  <div class="row">
-                  <div class="col-md-9 text-justify">
-                  <?php echo $musica[0]->entradilla; ?>
-                  </div>
-                  <div class="col-md-3"> 
-                  <img src="<?php echo $musica[0]->imagen; ?>" class=" img-responsive thumbnail pull-right"></a>
-                  </div>
-                  </div>
-                  <hr>
-
-                  <div class="row">
-                  <div class="col-md-6 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $musica[1]->id; ?>">
-                  <p class="text-center"><strong><?php echo $musica[1]->titular; ?></strong></p>
-                  <p><?php echo $musica[1]->entradilla; ?></p></a>
-                  </div>
-                  <div class="col-md-6 text-justify">
-                  <a href="?c=noticia&a=noticia&id=<?php echo $musica[2]->id; ?>">
-                  <p class="text-center"><strong><?php echo $musica[2]->titular; ?></strong></p>
-                  <p><?php echo $musica[2]->entradilla; ?></p></a>
-                  </div>
-                  </div>
-                  <hr>
-                  <!--modulo musica -->
                  
-                  <hr>
+                    
                   
                   <div class="row">
                     <div class="col-md-3 col-sm-6 col-6">
@@ -355,56 +211,56 @@
                 </div><!--/panel-->
                 <!--/end right column-->
         </div> 
-      		<!-- columna de categorias -->
+      		<!-- left side column -->
   			<div class="col-md-2">
               	<div class="panel panel-default" id="sidebar">
                 <div class="panel-heading" style="background-color:#888;color:#fff;">Categorías</div> 
                 <div class="panel-body">
-                <div class="media">
-                    <a class="pull-left" href="?c=noticia&a=categoria&id=1">
+      			    <div class="media">
+                    <a class="pull-left" href="#">
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=1"><strong>CINE</strong></a></h5>
+                      <h5 class="media-heading"><a href="#"><strong>CINE</strong></a></h5>
                       <small>Reseñas de cine de hoy y siempre.</small><br>
                     </div>
                   </div>
                   <div class="media">
-                    <a class="pull-left" href="?c=noticia&a=categoria&id=4">
+                    <a class="pull-left" href="#">
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=4"><strong>DEPORTES</strong></a></h5>
+                      <h5 class="media-heading"><a href="#"><strong>DEPORTES</strong></a></h5>
                       <small>Todos los deportes, no solo fútbol.</small><br>
                     </div>
                   </div>
                   <div class="media">
-                    <a class="pull-left" href="?c=noticia&a=categoria&id=3">
+                    <a class="pull-left" href="#">
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=3"><strong>LIBROS</strong></a></h5>
+                      <h5 class="media-heading"><a href="#"><strong>LIBROS</strong></a></h5>
                       <small>Leer nos hace libres.</small><br>
                     </div>
                   </div>
                   <div class="media">
-                    <a class="pull-left" href="?c=noticia&a=categoria&id=2">
+                    <a class="pull-left" href="#">
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=2"><strong>MÚSICA</strong></a></h5>
+                      <h5 class="media-heading"><a href="#"><strong>MÚSICA</strong></a></h5>
                       <small>Sin música la vida sería un error.</small><br>
                     </div>
                   </div>
                 </div><!--/panel body-->
               </div><!--/panel-->
-      		</div><!--/end columna de categorias-->
+      		</div><!--/end left column-->
   	</div>
 </div>
 <footer>
   <div class="container">
   	<div class="row">
-      <div class="col-md-12 text-right"><h5>©Miguel Ángel Valdepeñas Rodríguez 2015</h5></div>
+      <div class="col-md-12 text-right"><h5>©Company 2014</h5></div>
     </div>
   </div>
 </footer>

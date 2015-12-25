@@ -57,4 +57,17 @@ class NoticiaController
         $this->model->Eliminar($_REQUEST['id']);
         header('Location: index.php');
     }
+
+    public function noticia($id)
+    {
+        $noticia = $this->model->ObtenerNoticia($_REQUEST['id']);
+        $noticias = $this->model->ObtenerTodasCategoria($noticia->categoria_id);
+        require_once 'view/layout/noticia.html';
+    }
+
+    public function categoria($categoria_id)
+    {
+        $noticias = $this->model->ObtenerTodasCategoria($_REQUEST['id']);
+        require_once 'view/layout/categoria.html';
+    }
 }
