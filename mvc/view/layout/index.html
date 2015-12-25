@@ -5,6 +5,8 @@
 		<meta charset="utf-8">
 		<title>eNubes</title>
 		<meta name="generator" content="Bootply" />
+    <meta name="description" content="">
+    <meta name="author" content="Miguel Ángel Valdepeñas">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +27,7 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">  
           <li><a href="#">eNubes.com</a></li>
-          <li><a href="#">Link</a></li>
+          <li><a href="?c=index&a=panelAdmin">Admin</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Channels</a>
             <ul class="dropdown-menu">
@@ -49,7 +51,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Login</a></li>
+              <li><a data-toggle="modal" href="#exampleModal">Login</a></li>
               <li><a href="#">Profile</a></li>
               <li class="divider"></li>
               <li><a href="#">About</a></li>
@@ -79,6 +81,35 @@
 <!-- Begin Body -->
 <div class="container">
 	<div class="no-gutter row">
+
+<!-- modal de login -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form action="?c=index&a=login" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="usuario" class="control-label">usuario:</label>
+            <input type="email" class="form-control" id="usuario">
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label">Contraseña:</label>
+            <input type="password" class="form-control" id="password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div><!-- fin del modal de login -->
+
             
           <!--mid column-->
           <div class="col-md-2">
@@ -352,7 +383,7 @@
                 </div><!--/panel-->
                 <!--/end right column-->
         </div>
-        
+
       		<!-- columna de categorias -->
   			<div class="col-md-2">
               	<div class="panel panel-default" id="sidebar">
@@ -372,7 +403,7 @@
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=4"><strong>DEPORTES</strong></a></h5>
+                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=4"><strong>DEPORTE</strong></a></h5>
                       <small>Todos los deportes, no solo fútbol.</small><br>
                     </div>
                   </div>
