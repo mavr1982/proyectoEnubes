@@ -1,0 +1,163 @@
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Usuarios
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="?c=index&a=panelAdmin">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> Estadísticas
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4>Visitas por categoría (año 2015)</h4>
+                    </div>
+                    <div class="col-lg-6">
+                        <canvas id="visitas2015linea" width="400" height="300"></canvas>
+                    </div>
+                    <div class="col-lg-6">
+                        <canvas id="visitas2015donut" width="400" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                    <canvas id="visitasNoticias" width="900" height="400"></canvas>
+                    </div>
+                </div>    
+
+
+
+
+
+                    
+     <?php var_dump($todasNoticias); ?>                   
+
+
+
+ 
+                    
+                                        
+                                
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+ 
+ <script src='../assets/js/Chart.js'></script>
+
+ <script>
+
+ var LineChartNews = {
+    labels: ['Cine', 'Deporte', 'Libros', 'Música'],
+    datasets: [
+        {
+            fillColor: "#084B8A",
+            strokeColor: "rgba(255,255,255,1)",
+            pointColor: "red",
+            pointStrokeColor: "#fff",
+            data: [ <?php echo $cine2015->cantidad; ?>,
+                    <?php echo $deporte2015->cantidad; ?>,
+                    <?php echo $libros2015->cantidad; ?>,
+                    <?php echo $musica2015->cantidad; ?>
+                    ]
+        }
+    ]
+};
+
+var myLineChartNews = new Chart(document.getElementById("visitasNoticias").getContext("2d")).Line(LineChartNews, {scaleFontSize : 13, scaleFontColor : "#ffa45e"});
+ 
+var LineChart = {
+    labels: ['Cine', 'Deporte', 'Libros', 'Música'],
+    datasets: [
+        {
+            fillColor: "#084B8A",
+            strokeColor: "rgba(255,255,255,1)",
+            pointColor: "red",
+            pointStrokeColor: "#fff",
+            data: [ <?php echo $cine2015->cantidad; ?>,
+                    <?php echo $deporte2015->cantidad; ?>,
+                    <?php echo $libros2015->cantidad; ?>,
+                    <?php echo $musica2015->cantidad; ?>
+                    ]
+        }
+    ]
+};
+
+var myLineChart = new Chart(document.getElementById("visitas2015linea").getContext("2d")).Line(LineChart, {scaleFontSize : 13, scaleFontColor : "#ffa45e"});
+
+var data = [
+    {
+        value: <?php echo $cine2015->cantidad; ?>,
+        color:"#FF0000",
+        highlight: "#B40404",
+        label: "Cine"
+    },
+    {
+        value: <?php echo $deporte2015->cantidad; ?>,
+        color: "#64FE2E",
+        highlight: "#088A08",
+        label: "Deporte"
+    },
+    {
+        value: <?php echo $libros2015->cantidad; ?>,
+        color: "#58D3F7",
+        highlight: "#084B8A",
+        label: "Libros"
+    },
+    {
+        value: <?php echo $musica2015->cantidad; ?>,
+        color: "#FE2EF7",
+        highlight: "#8A0886",
+        label: "Música"
+    }
+
+
+]
+
+var options = {
+        animation: false
+    };
+
+var c = $('#visitas2015donut');
+    var ct = c.get(0).getContext('2d');
+    var ctx = document.getElementById("visitas2015donut").getContext("2d");
+
+    myNewChart = new Chart(ct).Doughnut(data, options);
+
+
+
+</script>
+
+</body>
+
+
+</html>

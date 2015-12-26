@@ -1,0 +1,91 @@
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+       
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Noticias
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="?c=index&a=panelAdmin">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> Noticias
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                    <div class="row">
+                    <div class="col-lg-6">
+                        <h2>listado de noticias</h2>
+                    </div>
+                    <div class="col-lg-6" style="text-align: right; padding-right: 18px">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modelCreate">Crear nueva noticia</button>
+                    </div>
+                    </div> 
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Categoria</th>
+                                        <th class="text-center">Titular</th>
+                                        <th class="text-center">Fecha</th>
+                                        <th class="text-center">Imagen</th>
+                                        <th class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                <?php foreach ($noticias as $item): ?>
+                                    <tr>
+                                        <td class="text-center"><?php echo $item->id; ?></td>
+                                        <td class="text-center"><?php echo $item->categoria_id; ?></td>
+                                        <td><?php echo $item->titular; ?></td>
+                                        <td class="text-center"><?php echo $item->fecha; ?></td>
+                                        <td class="text-center"><?php echo $item->imagen; ?></td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit" onclick="setSelectedID(<?php echo $item->id; ?>)">Editar</button>
+                                            <br><br>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" onclick="setSelectedID(<?php echo $item->id; ?>)">Eliminar</button>
+                                            </td>
+                                    </tr>
+                                    <?php endforeach; ?>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>                    
+                </div>
+                <!-- /.row -->                
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -129,12 +129,12 @@ class Usuario
 		try 
 		{
 			$stm = $this->pdo
-			          ->prepare("SELECT * FROM usuarios WHERE usuario = " . $usuario . " AND password = " . $password);
+			          ->prepare("SELECT * FROM usuarios WHERE usuario = '" . $usuario . "' AND password = '" . $password ."';");
 			          
 
 			$stm->execute();
 			if ($stm == TRUE) {
-				return $stm->fetch(PDO::FETCH_OBJ);
+				return TRUE;
 			}
 		} catch (Exception $e) 
 		{

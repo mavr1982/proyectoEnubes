@@ -1,167 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>eNubes</title>
-		<meta name="generator" content="Bootply" />
-    <meta name="description" content="">
-    <meta name="author" content="Miguel Ángel Valdepeñas">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="../assets/css/styles.css" rel="stylesheet">
-	</head>
-	<body>
-<nav class="navbar navbar-static">
-   <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/"  ><b>Inicio</b></a>
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="glyphicon glyphicon-chevron-down"></span>
-      </a>
-    </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">  
-          <li><a href="#">eNubes.com</a></li>
-          <li><a href="?c=index&a=panelAdmin">Admin</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Channels</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              
-            </ul>
-          </li> 
-        </ul>
-        <ul class="nav navbar-right navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-            <ul class="dropdown-menu" style="padding:12px;">
-                <form class="form-inline">
-     				<button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
-                </form>
-             </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-              <li><a data-toggle="modal" href="#exampleModal">Login</a></li>
-              <li><a href="#">Profile</a></li>
-              <li class="divider"></li>
-              <li><a href="#">About</a></li>
-             </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-</nav><!-- /.navbar -->
-
-<header class="masthead">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <h1><a href="/" title="Scroll down for your viewing pleasure">Noticias eNubes</a>
-          <p class="lead">Proyecto para la agencia eNubes.com</p></h1>
-      </div>
-      <div class="col-md-3">
-        <div class="well pull-right">
-          <img src="//placehold.it/280x100/E7E7E7">        
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
+<body>
 <!-- Begin Body -->
 <div class="container">
-	<div class="no-gutter row">
-
-<!-- modal de login -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Login</h4>
-      </div>
-      <div class="modal-body">
-        <form action="?c=index&a=login" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="usuario" class="control-label">usuario:</label>
-            <input type="email" class="form-control" id="usuario">
-          </div>
-          <div class="form-group">
-            <label for="password" class="control-label">Contraseña:</label>
-            <input type="password" class="form-control" id="password">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Enviar</button>
-      </div>
-    </div>
-  </div>
-</div><!-- fin del modal de login -->
-
-            
-          <!--mid column-->
+	<div class="no-gutter row">            
+          <!--columna izquierda-->
           <div class="col-md-2">
               <div class="panel" id="midCol">
-                <div class="panel-heading" style="background-color:#555;color:#eee;">Conócenos</div> 
-                <div class="panel-body">
-                  
+                <div class="panel-heading" style="background-color:#555;color:#eee;">Conócenos</div>
+                <div class="panel-body">                  
                   <div class="well text-centered">
-                          <img src="../assets/images/ecloud.jpg" class="img-responsive">
-                          <br><p class="text-centered">
-                          Queremos que seas partícipe de nuestro proyecto.<br><br>   Contactanos a través de
-                          </p>
+                      <img src="../assets/images/ecloud.jpg" class="img-responsive">
+                      <br><p class="text-centered">Queremos que seas partícipe de nuestro proyecto.<br><br>   Contactanos a través de</p>
 
-                <div class="row ">
-                  <div class="col-xs-3">
-                    <i class="icon-2x icon-facebook"></i>
-                    </div>
-                    <div class="col-xs-3">
-                    <i class="icon-2x icon-twitter"></i>
-                    </div>
-                    <div class="col-xs-3">
-                    <i class="icon-2x icon-linkedin"></i>
-                    </div>
-                    <div class="col-xs-3">
-                    <i class="icon-2x icon-pinterest"></i>
-                    </div>
-                  </div>
-                
+                    <div class="row "><!-- iconos de rrss -->
+                      <div class="col-xs-3">
+                        <i class="icon-2x icon-facebook"></i>
+                      </div>
+                      <div class="col-xs-3">
+                        <i class="icon-2x icon-twitter"></i>
+                      </div>
+                      <div class="col-xs-3">
+                        <i class="icon-2x icon-linkedin"></i>
+                      </div>
+                      <div class="col-xs-3">
+                        <i class="icon-2x icon-pinterest"></i>
+                      </div>
+                    </div><!-- end iconos de rrss -->               
                          
                   </div>
                   
                   <hr>
                   
-                  <h3>Top Members</h3>
+                  <h3>Últimas conexiones</h3>
                   
                   <h5><a href="#"><i class="glyphicon glyphicon-user"></i> John Chapman</a></h5>
                   <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Max Axleton</a></h5>
                   <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Devin Skelly</a></h5>
                   <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Katie Kowalski</a></h5>
                   <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Amet Deberge</a></h5>
-                
-                  <hr>  
-                  
-                  <img class="img-responsive" src="//placehold.it/300x200/FFF">    
-                  
-                  
-                  
+                                  
                </div> 
                </div><!--/panel-->
-          </div><!--/end mid column-->
+          </div><!--/end columna izquierda-->
           
-          <!-- right content column-->
+          <!-- right columna contenido-->
           <div class="col-md-8" id="content">
               <div class="panel">
                 <div class="panel-heading" style="background-color:#111;color:#fff;">TITULARES</div>   
@@ -344,44 +225,10 @@
                   <!--modulo musica -->
                  
                   <hr>
-                  
-                  <div class="row">
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/EDEDED" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/DDDDDD" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/555555/EEE" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/F3F3F3" class="img-responsive"></a>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/999999/DDD" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/CCCCCC" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/EDEDED" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/E0E0E0" class="img-responsive"></a>
-                    </div>
-                  </div>
-                  
-                  <hr>
-                  <h4><a href="http://bootply.com/69913">Edit on Bootply</a></h4>
-                  <hr>
               
                   </div><!--/panel-body-->
                 </div><!--/panel-->
-                <!--/end right column-->
+                <!--/end columna contenido-->
         </div>
 
       		<!-- columna de categorias -->
@@ -429,24 +276,7 @@
               </div><!--/panel-->
       		</div><!--/end columna de categorias-->
   	</div>
-</div>
-<footer>
-  <div class="container">
-  	<div class="row">
-      <div class="col-md-12 text-right"><h5>©Miguel Ángel Valdepeñas Rodríguez 2015</h5></div>
-    </div>
   </div>
-</footer>
-
-
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="../assets/js/bootstrap.min.js"></script>
-		<script src="../assets/js/scripts.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="../assets/js/jquery.fittext.js"></script>
-<script type="text/javascript">    
-    $("#fittext1").fitText(1.1, { minFontSize: '20px', maxFontSize: '40px' });
-  </script>
-	</body>
+	
+ </body>
 </html>

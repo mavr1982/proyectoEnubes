@@ -10,15 +10,7 @@ class NoticiaController
     {
         $this->model = new Noticia();
     }
-    
-    public function Index()
-    {
-        //require_once 'view/layout/header.php';
-        //require_once 'view/noticia/noticia.php';
-        //require_once 'view/layout/footer.php';
-        require_once 'view/layout/index.html';
-    }
-    
+        
     public function Crud()
     {
         $alm = new Noticia();
@@ -61,13 +53,30 @@ class NoticiaController
     public function noticia($id)
     {
         $noticia = $this->model->ObtenerNoticia($_REQUEST['id']);
+        $this->model->registrarVisita($_REQUEST['id'], $noticia->categoria_id);
         $noticias = $this->model->ObtenerTodasCategoria($noticia->categoria_id);
+
+        require_once 'view/layout/head.html';
+        require_once 'view/layout/nav.html';
+        require_once 'view/layout/header.html';
+        require_once 'view/modals/login.php';
         require_once 'view/layout/noticia.html';
+        require_once 'view/layout/footer.html';
+        require_once 'view/layout/scripts.php';
     }
 
     public function categoria($categoria_id)
     {
         $noticias = $this->model->ObtenerTodasCategoria($_REQUEST['id']);
-        require_once 'view/layout/categoria.html';
+
+        require_once 'view/layout/head.html';
+        require_once 'view/layout/nav.html';
+        require_once 'view/layout/header.html';
+        require_once 'view/modals/login.php';
+        require_once 'view/layout/categoria.html';        
+        require_once 'view/layout/footer.html';
+        require_once 'view/layout/scripts.php';
     }
+
+
 }

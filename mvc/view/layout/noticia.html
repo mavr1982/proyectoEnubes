@@ -1,81 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>eNubes</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="../assets/css/styles.css" rel="stylesheet">
-	</head>
-	<body>
-<nav class="navbar navbar-static">
-   <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/"  ><b>Inicio</b></a>
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="glyphicon glyphicon-chevron-down"></span>
-      </a>
-    </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">  
-          <li><a href="#">eNubes.com</a></li>
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Channels</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              
-            </ul>
-          </li> 
-        </ul>
-        <ul class="nav navbar-right navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-            <ul class="dropdown-menu" style="padding:12px;">
-                <form class="form-inline">
-     				<button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
-                </form>
-             </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Profile</a></li>
-              <li class="divider"></li>
-              <li><a href="#">About</a></li>
-             </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-</nav><!-- /.navbar -->
-
-<header class="masthead">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <h1><a href="/" title="Scroll down for your viewing pleasure">Noticias eNubes</a>
-          <p class="lead">Proyecto para la agencia eNubes.com</p></h1>
-      </div>
-      <div class="col-md-3">
-        <div class="well pull-right">
-          <img src="//placehold.it/280x100/E7E7E7">        
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
 <!-- Begin Body -->
 <div class="container">
 	<div class="no-gutter row">
@@ -140,7 +62,7 @@
                   <!-- noticia -->
                   <div class="row">
                   <div class="col-md-12">
-                    <a href="#"><img src="<?php echo $noticia->imagen;?>" class="img-responsive"></a>
+                    <img src="<?php echo $noticia->imagen;?>" class="img-responsive">
                   </div>
                    
                   <div class="col-md-12 text-justify">
@@ -175,44 +97,7 @@
                       </div>
                   <hr>
                   <?php endforeach; ?>
-                                  
-                  
-                 
-                    
-                  
-                  <div class="row">
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/EDEDED" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/DDDDDD" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/555555/EEE" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/F3F3F3" class="img-responsive"></a>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/999999/DDD" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/CCCCCC" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/EDEDED" class="img-responsive"></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-6">
-                      <a href="#"><img src="//placehold.it/600X200/E0E0E0" class="img-responsive"></a>
-                    </div>
-                  </div>
-                  
-                  <hr>
-                  <h4><a href="http://bootply.com/69913">Edit on Bootply</a></h4>
-                  <hr>
+                   
               
                   </div><!--/panel-body-->
                 </div><!--/panel-->
@@ -237,7 +122,7 @@
                       <img class="media-object" src="http://placehold.it/80/F0F0F0">
                     </a>
                     <div class="media-body">
-                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=4"><strong>DEPORTES</strong></a></h5>
+                      <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=4"><strong>DEPORTE</strong></a></h5>
                       <small>Todos los deportes, no solo fútbol.</small><br>
                     </div>
                   </div>
@@ -262,25 +147,8 @@
                 </div><!--/panel body-->
               </div><!--/panel-->
       		</div><!--/end left column-->
-  	</div>
-</div>
-<footer>
-  <div class="container">
-  	<div class="row">
-      <div class="col-md-12 text-right"><h5>©Company 2014</h5></div>
+  	 </div>
     </div>
-  </div>
-</footer>
 
-
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="../assets/js/bootstrap.min.js"></script>
-		<script src="../assets/js/scripts.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="../assets/js/jquery.fittext.js"></script>
-<script type="text/javascript">    
-    $("#fittext1").fitText(1.1, { minFontSize: '20px', maxFontSize: '40px' });
-  </script>
 	</body>
 </html>

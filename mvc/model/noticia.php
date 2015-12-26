@@ -205,5 +205,27 @@ class Noticia
 		}
 	}//end function ObtenerUltimaPublicaCategoria
 
+	public function registrarVisita($noticia_id, $categoria_id)
+    {
+    	try 
+		{
+		$sql = "INSERT INTO visitas (id,noticia_id,fecha_visita, categoria_id) 
+		        VALUES (?, ?, ?, ?)";
+
+		$this->pdo->prepare($sql)
+		     ->execute(
+				array(
+					NULL,
+                    $noticia_id, 
+                    NULL,
+                    $categoria_id                    
+                )
+			);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+        
+    }//end function registrarVisita
 
 }

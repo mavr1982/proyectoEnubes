@@ -28,19 +28,18 @@ class IndexController
                 $controller = new controller();
                 $controller->login($_REQUEST['usuario'], $_REQUEST['password']);
             }
-        //require_once 'view/layout/head.php';
-        //require_once 'view/layout/header.php';
-        //require_once 'view/modals/inicio.php';
-        //require_once 'view/modals/registro.php';
+        require_once 'view/layout/head.html';
+        require_once 'view/layout/nav.html';
+        require_once 'view/layout/header.html';
+        require_once 'view/modals/login.php';
         require_once 'view/layout/index.html';
-        //require_once 'view/layout/footer.php';
-        //require_once 'view/layout/scripts.php';
+        require_once 'view/layout/footer.html';
+        require_once 'view/layout/scripts.php';
     }
 
     public function login()
     {
-                die('hola');
-
+                
         $usuario = trim($_POST['usuario'] );
         $usuario = filter_var( $usuario, FILTER_SANITIZE_EMAIL);
         $password = trim($_POST['password']);
@@ -50,7 +49,9 @@ class IndexController
 
         if ($check == TRUE)
         {
-            require_once 'https://www.as.com';
+            require_once 'view/layout/headAdmin.html';
+      require_once 'view/layout/navAdmin.html';
+      require_once 'view/layout/indexAdmin.html';
         } else {
             require_once 'https://www.google.com';
         }
@@ -58,15 +59,36 @@ class IndexController
 
     public function panelAdmin()
     {
+      require_once 'view/layout/headAdmin.html';
+      require_once 'view/layout/navAdmin.html';
       require_once 'view/layout/indexAdmin.html';  
     }
 
-    public function panelAdminTablas()
+    public function panelAdminTablaNoticias()
     {
-
         $noticias = $this->modelNoticia->Listar();
-        require_once 'view/layout/tables.html';  
-    }    
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaNoticias.html';
+        require_once 'view/modals/createNews.php';
+        require_once 'view/modals/editNews.php';   
+    }
+
+    public function panelAdminTablaUsuarios()
+    {
+        $usuarios = $this->modelUsuario->Listar();
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaUsuarios.html';
+        require_once 'view/modals/createUser.php';
+        require_once 'view/modals/editUser.php';   
+    }
+
+    public function estadisticas()
+    {
+        
+
+    }      
          
     
 }
