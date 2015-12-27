@@ -19,7 +19,7 @@
                                 <i class="fa fa-dashboard"></i>  <a href="?c=index&a=panelAdmin">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-table"></i> Estadísticas
+                                <i class="fa fa-bar-chart-o"></i> Estadísticas
                             </li>
                         </ol>
                     </div>
@@ -37,25 +37,15 @@
                         <canvas id="visitas2015donut" width="400" height="300"></canvas>
                     </div>
                 </div>
+
+                <hr>
+
                 <div class="row">
                     <div class="col-lg-12">
-                    <canvas id="visitasNoticias" width="900" height="400"></canvas>
+                    <h4>Visitas por noticia</h4>
+                    <canvas id="visitasNoticias" width="900" height="600"></canvas>
                     </div>
-                </div>    
-
-
-
-
-
-                    
-     <?php var_dump($todasNoticias); ?>                   
-
-
-
- 
-                    
-                                        
-                                
+                </div>          
 
             </div>
             <!-- /.container-fluid -->
@@ -77,18 +67,16 @@
  <script>
 
  var LineChartNews = {
-    labels: ['Cine', 'Deporte', 'Libros', 'Música'],
+    labels: [<?php echo $noticia; ?>],
     datasets: [
         {
-            fillColor: "#084B8A",
-            strokeColor: "rgba(255,255,255,1)",
-            pointColor: "red",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
             pointStrokeColor: "#fff",
-            data: [ <?php echo $cine2015->cantidad; ?>,
-                    <?php echo $deporte2015->cantidad; ?>,
-                    <?php echo $libros2015->cantidad; ?>,
-                    <?php echo $musica2015->cantidad; ?>
-                    ]
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [ <?php echo $valor; ?> ]
         }
     ]
 };
@@ -99,10 +87,12 @@ var LineChart = {
     labels: ['Cine', 'Deporte', 'Libros', 'Música'],
     datasets: [
         {
-            fillColor: "#084B8A",
-            strokeColor: "rgba(255,255,255,1)",
-            pointColor: "red",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
             pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
             data: [ <?php echo $cine2015->cantidad; ?>,
                     <?php echo $deporte2015->cantidad; ?>,
                     <?php echo $libros2015->cantidad; ?>,

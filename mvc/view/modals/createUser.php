@@ -7,22 +7,22 @@
         <h4 class="modal-title" id="modelCreateUserLabel">Crear usuario</h4>
       </div>
       <div class="modal-body">
-        <form action="?c=index&a=login" method="post" enctype="multipart/form-data">
+        <form action="?c=usuario&a=crearUsuario" method="post" enctype="multipart/form-data" id="formCreateUser">
           <div class="form-group">
             <label for="usuario" class="control-label">Usuario</label>
-            <input type="email" class="form-control" id="usuario">
+            <input type="email" class="form-control" id="usuario" name="usuario">
           </div>
           <div class="form-group">
             <label for="password" class="control-label">Contraseña</label>
-            <input type="email" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" name="password">
           </div>
           <div class="form-group">
-            <label for="titular" class="control-label">Nombre</label>
-            <input type="text" class="form-control" id="titular">
+            <label for="nombre" class="control-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
           </div>
           <div class="form-group">
-            <label for="entradilla" class="control-label">Apellidos</label>
-            <input type="text" class="form-control" id="titular">
+            <label for="apellidos" class="control-label">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" name="apellidos">
           </div>
           <div class="form-group">
             <label for="acceso_privado" class="control-label">Acceso a parte privada</label>
@@ -38,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Enviar</button>
+        <button type="submit" form="formCreateUser" class="btn btn-primary">Enviar</button>
       </div>
     </div>
   </div>

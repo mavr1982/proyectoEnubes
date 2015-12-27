@@ -6,11 +6,13 @@ class Noticia
     public $id;
     public $categoria_id;
     public $titular;
+    public $entradilla;
     public $fecha;
     public $contenido;
     public $imagen;
     public $published;
     public $public;
+    public $autor;
 
 	public function __CONSTRUCT()
 	{
@@ -101,12 +103,12 @@ class Noticia
 		}
 	}
 
-	public function Registrar(Noticia $data)
+	public function registrar($data)
 	{
 		try 
 		{
-		$sql = "INSERT INTO noticias (id,categoria_id,titular,fecha,contenido,imagen,published,public) 
-		        VALUES (?, ?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO noticias (id,categoria_id,titular,entradilla,fecha,contenido,imagen,published,public,autor) 
+		        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
@@ -114,11 +116,13 @@ class Noticia
 					NULL,
                     $data->categoria_id, 
                     $data->titular,
+                    $data->entradilla,
                     $data->fecha,
                     $data->contenido,
-                    $data->imagen,
-                    0,
-                    0,
+                    '../assets/images/' . $data->imagen,
+                    $data->published,
+                    $data->public,
+                    $data->autor
                 )
 			);
 		} catch (Exception $e) 

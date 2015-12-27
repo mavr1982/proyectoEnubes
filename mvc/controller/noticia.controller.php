@@ -78,5 +78,32 @@ class NoticiaController
         require_once 'view/layout/scripts.php';
     }
 
+    public function crearNoticia()
+    {
+        $data = new Noticia();
+
+        $data->usuario = trim($_POST['usuario'] );
+        $data->usuario = filter_var( $data->usuario, FILTER_SANITIZE_EMAIL);
+        $data->password = trim($_POST['password']);
+        $data->password = filter_var($data->password, FILTER_SANITIZE_STRING);
+        $data->nombre = trim($_POST['nombre'] );
+        $data->nombre = filter_var( $data->nombre, FILTER_SANITIZE_STRING);
+        $data->apellidos = trim($_POST['apellidos']);
+        $data->apellidos = filter_var($data->apellidos, FILTER_SANITIZE_STRING);
+        $data->acceso_privado = $_POST['acceso_privado'];
+        $data->is_admin = $_POST['is_admin'];
+  
+        $this->model->registrar($data);
+
+        $usuarios = $this->model->Listar();
+
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaUsuarios.html';
+        require_once 'view/modals/createUser.php';
+        require_once 'view/modals/editUser.php'; 
+
+    }
+
 
 }

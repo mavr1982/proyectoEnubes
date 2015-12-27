@@ -10,6 +10,7 @@ class Usuario
     public $password;
     public $is_admin;
     public $fecha_creacion;
+    public $acceso_privado;
 
 	public function __CONSTRUCT()
 	{
@@ -99,12 +100,12 @@ class Usuario
 		}
 	}
 
-	public function Registrar(Usuario $data)
+	public function registrar($data)
 	{
 		try 
 		{
-		$sql = "INSERT INTO usuarios (id,nombre,apellidos,usuario,password,fecha_creacion,is_admin) 
-		        VALUES (?, ?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO usuarios (id,nombre,apellidos,usuario,password,fecha_creacion,is_admin, acceso_privado) 
+		        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
@@ -114,8 +115,9 @@ class Usuario
                     $data->apellidos, 
                     $data->usuario, 
                     $data->password,
-                    $data->fecha_creacion,
-                    0
+                    NULL,
+                    $data->is_admin,
+                    $data->acceso_privado,
                 )
 			);
 		} catch (Exception $e) 

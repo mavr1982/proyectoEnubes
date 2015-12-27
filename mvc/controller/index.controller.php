@@ -50,8 +50,8 @@ class IndexController
         if ($check == TRUE)
         {
             require_once 'view/layout/headAdmin.html';
-      require_once 'view/layout/navAdmin.html';
-      require_once 'view/layout/indexAdmin.html';
+            require_once 'view/layout/navAdmin.html';
+            require_once 'view/layout/indexAdmin.html';
         } else {
             require_once 'https://www.google.com';
         }
@@ -67,6 +67,9 @@ class IndexController
     public function panelAdminTablaNoticias()
     {
         $noticias = $this->modelNoticia->Listar();
+
+        $usuarios = $this->modelUsuario->Listar();
+
         require_once 'view/layout/headAdmin.html';
         require_once 'view/layout/navAdmin.html';
         require_once 'view/layout/tablaNoticias.html';
@@ -77,18 +80,14 @@ class IndexController
     public function panelAdminTablaUsuarios()
     {
         $usuarios = $this->modelUsuario->Listar();
+        
         require_once 'view/layout/headAdmin.html';
         require_once 'view/layout/navAdmin.html';
         require_once 'view/layout/tablaUsuarios.html';
         require_once 'view/modals/createUser.php';
         require_once 'view/modals/editUser.php';   
     }
-
-    public function estadisticas()
-    {
-        
-
-    }      
+   
          
     
-}
+}// end Class

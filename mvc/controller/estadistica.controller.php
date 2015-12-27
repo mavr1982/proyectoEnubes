@@ -18,12 +18,33 @@ class EstadisticaController
         $libros2015 = $this->model->anualPorCategoria(3);
         $musica2015 = $this->model->anualPorCategoria(2);
 
-        $todasNoticias = $this->model->PorNoticia();
+        $todasNoticias = $this->model->porNoticia();
+        $noticia = '';
+        $valor = '';
+        foreach ($todasNoticias as $key ) {
+            $noticia .= "'" . $key->titular . "',";
+            $valor .= "'" . $key->cantidad . "',";
+        }
 
         require_once 'view/layout/headAdmin.html';
         require_once 'view/layout/navAdmin.html';
         require_once 'view/layout/graficosVisitas.html';
     }
+
+    public function tablaVisitas()
+    {
+
+        $todasNoticias = $this->model->porNoticiaOrdenadaPorVisitas();
+        $total = $this->model->totalVisitas();
+        $totalPorCategoria = $this->model->totalVisitasPorCategoria();
+        $noticiasPorCategoria = $this->model->noticiasPorCategoria();
+        $totalNoticias = $this->model->totalNoticias();
+
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaVisitas.html';   
+
+    }//end function tablaVisitas
 
 
 }

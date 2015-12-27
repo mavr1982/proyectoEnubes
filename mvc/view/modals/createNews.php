@@ -7,30 +7,39 @@
         <h4 class="modal-title" id="modelCreateLabel">Crear noticia</h4>
       </div>
       <div class="modal-body">
-        <form action="?c=index&a=login" method="post" enctype="multipart/form-data">
+        <form action="?c=index&a=login" method="post" enctype="multipart/form-data" id="formCreateNews">
           <div class="form-group">
             <label for="categoria_id" class="control-label">Categoria</label>
-            <input type="text" class="form-control" id="categoria_id">
+            <select class="form-control" id="categoria_id" name="categoria_id">
+              <option value="1">Cine</option>
+              <option value="2">Música</option>
+              <option value="3">Libros</option>
+              <option value="4">Deporte</option>
+            </select>
+          </div>
+          <div class="form-group">
+          <label for="autor" class="control-label">Categoria</label>
+            <select class="form-control" id="autor" name="autor">
+              <?php foreach ($usuarios as $item): ?>
+              <option value="<?php print $item->id; ?>"><?php print $item->nombre; ?></option>
+            <?php endforeach; ?>
+            </select>
           </div>
           <div class="form-group">
             <label for="titular" class="control-label">Titular</label>
-            <input type="text" class="form-control" id="titular">
+            <input type="text" class="form-control" id="titular" name="titular">
           </div>
           <div class="form-group">
             <label for="entradilla" class="control-label">Entradilla</label>
-            <textarea class="form-control" rows="2"  id="entradilla"></textarea>
+            <textarea class="form-control" rows="2" id="entradilla" name="entradilla"></textarea>
           </div>
           <div class="form-group">
             <label for="contenido" class="control-label">Contenido</label>
-            <textarea class="form-control" rows="6"  id="contenido"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="fecha" class="control-label">Fecha</label>
-            <input type="datetime" class="form-control" id="fecha">
-          </div>        
+            <textarea class="form-control" rows="6" id="contenido" name="contenido"></textarea>
+          </div>                  
           <div class="form-group">
             <label for="imagen" class="control-label">Imagen</label>
-            <input type="text" class="form-control" id="imagen">
+            <input type="text" class="form-control" id="imagen" name="imagen">
           </div>
           <div class="form-group">
             <label for="published" class="control-label">¿Publicar?</label><br>
@@ -46,7 +55,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Enviar</button>
+        <button type="submit" form="formCreateNews" class="btn btn-primary">Enviar</button>
       </div>
     </div>
   </div>

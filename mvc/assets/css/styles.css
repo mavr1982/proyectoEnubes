@@ -60,9 +60,13 @@ body {
   background-color:#efefef;
 }
 
-a,a:hover {
+a {
+  color:#676767;
+  text-decoration:none;
+}
+a:hover {
 	color:#77CCDD;
-  	text-decoration:none;
+  text-decoration:none;
 }
 
 .highlight-bk {
