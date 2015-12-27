@@ -57,7 +57,7 @@ class Usuario
 		}
 	}
 
-	public function Eliminar($id)
+	public function borrar($id)
 	{
 		try 
 		{
@@ -71,16 +71,16 @@ class Usuario
 		}
 	}
 
-	public function Actualizar($data)
+	public function actualizar($data)
 	{
 		try 
 		{
 			$sql = "UPDATE usuarios SET 
-						nombre          = ?, 
-						apellidos        = ?,
-                        usuario        = ?,
-						password            = ?, 
-						is_Admin = ?
+						nombre		= ?, 
+						apellidos   = ?,
+						password    = ?, 
+						is_admin 	= ?,
+						acceso_privado 	= ?
 				    WHERE id = ?";
 
 			$this->pdo->prepare($sql)
@@ -88,9 +88,9 @@ class Usuario
 				    array(
                         $data->nombre, 
                         $data->apellidos,
-                        $data->usuario,
                         $data->password,
                         $data->is_admin,
+                        $data->acceso_privado,
                         $data->id
 					)
 				);
@@ -98,7 +98,8 @@ class Usuario
 		{
 			die($e->getMessage());
 		}
-	}
+
+	}//end function actualizar
 
 	public function registrar($data)
 	{
@@ -124,20 +125,20 @@ class Usuario
 		{
 			die($e->getMessage());
 		}
-	}//end functio Registrar
+		
+	}//end function registrar
 
 	public function comprobarLogin($usuario, $password)
 	{
 		try 
 		{
+			$password = md5($password);
 			$stm = $this->pdo
 			          ->prepare("SELECT * FROM usuarios WHERE usuario = '" . $usuario . "' AND password = '" . $password ."';");
 			          
 
 			$stm->execute();
-			if ($stm == TRUE) {
-				return TRUE;
-			}
+				return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e) 
 		{
 			die($e->getMessage());

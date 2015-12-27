@@ -29,6 +29,8 @@ class EstadisticaController
         require_once 'view/layout/headAdmin.html';
         require_once 'view/layout/navAdmin.html';
         require_once 'view/layout/graficosVisitas.html';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html';
     }
 
     public function tablaVisitas()
@@ -42,7 +44,9 @@ class EstadisticaController
 
         require_once 'view/layout/headAdmin.html';
         require_once 'view/layout/navAdmin.html';
-        require_once 'view/layout/tablaVisitas.html';   
+        require_once 'view/layout/tablaVisitas.html';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html';   
 
     }//end function tablaVisitas
 

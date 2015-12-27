@@ -19,7 +19,7 @@
                                 <i class="fa fa-dashboard"></i>  <a href="?c=index&a=panelAdmin">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-table"></i> Usuarios
+                                <i class="fa fa-users"></i></i> Usuarios
                             </li>
                         </ol>
                     </div>
@@ -63,9 +63,9 @@
                                         </td>
                                         <td class="text-center"><?php echo $item->is_admin; ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit" onclick="setSelectedID(<?php echo $item->id; ?>)">Editar</button>
+                                            <button type="button" class="editModal btn btn-warning" data-toggle="modal" data-target="#modalEditUser" data-id="<?php echo $item->id; ?>">Editar</button>
                                             <br><br>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" onclick="setSelectedID(<?php echo $item->id; ?>)">Eliminar</button>
+                                            <button type="button" class="delModal btn btn-danger" data-toggle="modal" data-target="#modelDeleteUser" data-id="<?php echo $item->id; ?>">Eliminar</button>
                                             </td>
                                     </tr>
                                     <?php endforeach; ?>                                    
@@ -87,6 +87,53 @@
 
     <!-- jQuery -->
     <script src="../assets/js/jquery.js"></script>
+
+    <script src="../assets/js/scripts.js"></script>
+
+    <script >
+        $(document).on("click", ".delModal", function () {
+            var user = $(this).data('id');
+            $(".modal-body #idForDel").val( user );
+        });
+
+        $(document).on("click", ".editModal", function () {
+            var user = $(this).data('id');
+
+            $.ajax({
+                url: '?c=usuario&a=ajaxUsuario',
+                type: "get",
+                dataType: "json",
+                data: "id=" + user,
+                success:function (data) {
+
+                        $("#formEditUser #edit-id").val( data.id );
+                        $("#formEditUser #edit-usuario").val( data.usuario );
+                        $("#formEditUser #edit-password").val( data.password );
+                        $("#formEditUser #edit-nombre").val( data.nombre );
+                        $("#formEditUser #edit-apellidos").val( data.apellidos );
+                        
+                        if(data.acceso_privado == 1)
+                        {
+                            $("#formEditUser #edit-acceso_privado[value='1']").prop('checked', true);    
+                        } else {
+                            $("#formEditUser #edit-acceso_privado[value='0']").prop('checked', true);
+                        }
+
+                        if(data.is_admin == 1)
+                        {
+                            $("#formEditUser #edit-is_admin[value='1']").prop('checked', true);    
+                        } else {
+                            $("#formEditUser #edit-is_admin[value='0']").prop('checked', true);
+                        }
+
+                        }
+            });
+
+
+
+        });
+        
+    </script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../assets/js/bootstrap.min.js"></script>

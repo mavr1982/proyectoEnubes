@@ -19,7 +19,7 @@
                                 <i class="fa fa-dashboard"></i>  <a href="?c=index&a=panelAdmin">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-table"></i> Noticias
+                                <i class="fa fa-newspaper-o"></i> Noticias
                             </li>
                         </ol>
                     </div>
@@ -43,6 +43,8 @@
                                         <th class="text-center">Id</th>
                                         <th class="text-center">Categoria</th>
                                         <th class="text-center">Titular</th>
+                                        <th class="text-center">¿Pública?</th>
+                                        <th class="text-center">¿Publicada?</th>
                                         <th class="text-center">Fecha</th>
                                         <th class="text-center">Imagen</th>
                                         <th class="text-center">Acciones</th>
@@ -55,12 +57,22 @@
                                         <td class="text-center"><?php echo $item->id; ?></td>
                                         <td class="text-center"><?php echo $item->categoria_id; ?></td>
                                         <td><?php echo $item->titular; ?></td>
+                                        <?php if($item->public == 1): ?>
+                                            <td class="text-center">Pública</td>
+                                        <?php else: ?>
+                                            <td class="text-center">Privada</td>
+                                        <?php endif; ?>
+                                        <?php if($item->published == 1): ?>
+                                            <td class="text-center">Publicada</td>
+                                        <?php else: ?>
+                                            <td class="text-center" style="color: red;">No publicada</td>
+                                        <?php endif; ?>
                                         <td class="text-center"><?php echo $item->fecha; ?></td>
                                         <td class="text-center"><?php echo $item->imagen; ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit" onclick="setSelectedID(<?php echo $item->id; ?>)">Editar</button>
+                                            <button type="button" class="editModal btn btn-warning" data-toggle="modal" data-target="#modalEdit" data-id="<?php echo $item->id; ?>">Editar</button>
                                             <br><br>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" onclick="setSelectedID(<?php echo $item->id; ?>)">Eliminar</button>
+                                            <button type="button" class="delModal btn btn-danger" data-toggle="modal" data-target="#modelDeleteNews" data-id="<?php echo $item->id; ?>">Eliminar</button>
                                             </td>
                                     </tr>
                                     <?php endforeach; ?>                                    
@@ -85,6 +97,68 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../assets/js/bootstrap.min.js"></script>
+
+    <script >
+        $(document).on("click", ".delModal", function () {
+            var news = $(this).data('id');
+            $(".modal-body #idForDel").val( news );
+        });
+
+        $(document).on("click", ".editModal", function () {
+            var news = $(this).data('id');
+
+            $.ajax({
+                url: '?c=noticia&a=ajaxNoticia',
+                type: "get",
+                dataType: "json",
+                data: "id=" + news,
+                success:function (data) {
+
+                        $("#formEditNews #edit-id").val( data.id );
+                        $("#formEditNews #edit-titular").val( data.titular );
+                        $("#formEditNews #edit-entradilla").val( data.entradilla );
+                        $("#formEditNews #edit-contenido").val( data.contenido );
+                        $("#formEditNews #edit-imagen").val( data.imagen );
+                        
+                        if(data.published == 1)
+                        {
+                            $("#formEditNews #edit-published[value='1']").prop('checked', true);    
+                        } else {
+                            $("#formEditNews #edit-published[value='0']").prop('checked', true);
+                        }
+
+                        if(data.public == 1)
+                        {
+                            $("#formEditNews #edit-public[value='1']").prop('checked', true);    
+                        } else {
+                            $("#formEditNews #edit-public[value='0']").prop('checked', true);
+                        }
+
+                        if(data.categoria_id == 1)
+                        {
+                            $("#formEditNews #edit-categoria_id option[value='1']").prop('selected', true);    
+                        }
+                        else if (data.categoria_id == 2)
+                        {
+                            $("#formEditNews #edit-categoria_id option[value='2']").prop('selected', true);
+                        }
+                        else if (data.categoria_id == 3)
+                        {
+                            $("#formEditNews #edit-categoria_id option[value='3']").prop('selected', true);
+                        }
+                        else
+                        {
+                            $("#formEditNews #edit-categoria_id option[value='4']").prop('selected', true);
+                        }
+
+                        }
+            });
+
+
+
+        });
+        
+    </script>
 
 </body>
 

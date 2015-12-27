@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="modelCreateLabel">Crear noticia</h4>
       </div>
       <div class="modal-body">
-        <form action="?c=index&a=login" method="post" enctype="multipart/form-data" id="formCreateNews">
+        <form action="?c=noticia&a=crearNoticia" method="post" enctype="multipart/form-data" id="formCreateNews">
           <div class="form-group">
             <label for="categoria_id" class="control-label">Categoria</label>
             <select class="form-control" id="categoria_id" name="categoria_id">

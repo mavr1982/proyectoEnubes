@@ -225,3 +225,9 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+
+#footerAdmin {
+  color: #FFFFFF;
+  height: 80px;
+}

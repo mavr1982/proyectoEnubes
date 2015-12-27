@@ -9,50 +9,24 @@ class UsuarioController{
     {
         $this->model = new Usuario();
     }
-    
-    public function Index()
-    {
-        require_once 'view/layout/header.php';
-        require_once 'view/usuario/usuario.php';
-        require_once 'view/layout/footer.php';
-    }
-    
-    public function Crud()
-    {
-        $alm = new Usuario();
         
-        if(isset($_REQUEST['id'])){
-            $alm = $this->model->Obtener($_REQUEST['id']);
-        }
-        
-        require_once 'view/header.php';
-        require_once 'view/usuario/usuarioEditar.php';
-        require_once 'view/footer.php';
-    }
-    
-    public function Guardar()
+    public function borrar()
     {
-        $alm = new Usuario();
         
-        $alm->id = $_REQUEST['id'];
-        $alm->Nombre = $_REQUEST['nombre'];
-        $alm->Apellido = $_REQUEST['apellidos'];
-        $alm->Correo = $_REQUEST['usuario'];
-        $alm->Sexo = $_REQUEST['password'];
-        $alm->FechaNacimiento = $_REQUEST['is_admin'];
+        $this->model->borrar($_POST['idForDel']);
 
-        $alm->id > 0 
-            ? $this->model->Actualizar($alm)
-            : $this->model->Registrar($alm);
-        
-        header('Location: index.php');
-    }
-    
-    public function Eliminar()
-    {
-        $this->model->Eliminar($_REQUEST['id']);
-        header('Location: index.php');
-    }
+        $usuarios = $this->model->Listar();
+
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaUsuarios.html';
+        require_once 'view/modals/createUser.php';
+        require_once 'view/modals/editUser.php';
+        require_once 'view/modals/deleteUser.php';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html';
+
+    }//end function borrar
 
     public function crearUsuario()
     {
@@ -62,6 +36,7 @@ class UsuarioController{
         $data->usuario = filter_var( $data->usuario, FILTER_SANITIZE_EMAIL);
         $data->password = trim($_POST['password']);
         $data->password = filter_var($data->password, FILTER_SANITIZE_STRING);
+        $data->password = md5($data->password);
         $data->nombre = trim($_POST['nombre'] );
         $data->nombre = filter_var( $data->nombre, FILTER_SANITIZE_STRING);
         $data->apellidos = trim($_POST['apellidos']);
@@ -77,7 +52,47 @@ class UsuarioController{
         require_once 'view/layout/navAdmin.html';
         require_once 'view/layout/tablaUsuarios.html';
         require_once 'view/modals/createUser.php';
-        require_once 'view/modals/editUser.php'; 
+        require_once 'view/modals/editUser.php';
+        require_once 'view/modals/deleteUser.php';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html'; 
 
-    }
+    }//end function crearUsuario
+
+    public function ajaxUsuario()
+    {
+        
+        $usuario = $this->model->Obtener($_GET['id']);
+
+        $data = json_encode($usuario);
+
+        echo $data;
+    
+    }//end function ajaxNoticia
+
+    public function editarUsuario()
+    {
+        $data = new Usuario(); 
+
+        $data->id = $_POST['edit-id'];
+        $data->password = md5($_POST['edit-password']);
+        $data->nombre = $_POST['edit-nombre'];
+        $data->apellidos = $_POST['edit-apellidos'];
+        $data->acceso_privado = $_POST['edit-acceso_privado'];
+        $data->is_admin = $_POST['edit-is_admin'];
+        $this->model->actualizar($data);
+
+        $usuarios = $this->model->Listar();
+
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaUsuarios.html';
+        require_once 'view/modals/createUser.php';
+        require_once 'view/modals/editUser.php';
+        require_once 'view/modals/deleteUser.php';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html'; 
+
+    }//end function editarUsuario
+
 }

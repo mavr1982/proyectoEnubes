@@ -1,5 +1,6 @@
 <?php
 require_once 'model/noticia.php';
+require_once 'model/usuario.php';
 
 class NoticiaController
 {
@@ -9,46 +10,25 @@ class NoticiaController
     public function __CONSTRUCT()
     {
         $this->model = new Noticia();
+        $this->modelUsuario = new Usuario();
     }
         
-    public function Crud()
+    public function borrar()
     {
-        $alm = new Noticia();
-        
-        if(isset($_REQUEST['id'])){
-            $alm = $this->model->Obtener($_REQUEST['id']);
-        }
-        
-        require_once 'view/header.php';
-        require_once 'view/noticia/noticiaEditar.php';
-        require_once 'view/footer.php';
-    }
-    
-    public function Guardar()
-    {
-        $alm = new Noticia();
-        
-        $alm->id = $_REQUEST['id'];
-        $alm->categoria_id = $_REQUEST['categoria_id'];
-        $alm->titular = $_REQUEST['titular'];
-        $alm->fecha = $_REQUEST['fecha'];
-        $alm->contenido = $_REQUEST['contenido'];
-        $alm->published = $_REQUEST['published'];
-        $alm->public = $_REQUEST['public'];
-        $alm->imagen = $_REQUEST['imagen'];
+        $this->model->borrar($_POST['idForDel']);
 
-        $alm->id > 0 
-            ? $this->model->Actualizar($alm)
-            : $this->model->Registrar($alm);
-        
-        header('Location: index.php');
-    }
-    
-    public function Eliminar()
-    {
-        $this->model->Eliminar($_REQUEST['id']);
-        header('Location: index.php');
-    }
+        $noticias = $this->model->Listar();
+
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaNoticias.html';
+        require_once 'view/modals/createNews.php';
+        require_once 'view/modals/editNews.php';
+        require_once 'view/modals/deleteNews.php';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html'; 
+
+    }//end function borrar
 
     public function noticia($id)
     {
@@ -60,6 +40,7 @@ class NoticiaController
         require_once 'view/layout/nav.html';
         require_once 'view/layout/header.html';
         require_once 'view/modals/login.php';
+        require_once 'view/modals/errorLogin.php';
         require_once 'view/layout/noticia.html';
         require_once 'view/layout/footer.html';
         require_once 'view/layout/scripts.php';
@@ -73,6 +54,7 @@ class NoticiaController
         require_once 'view/layout/nav.html';
         require_once 'view/layout/header.html';
         require_once 'view/modals/login.php';
+        require_once 'view/modals/errorLogin.php';
         require_once 'view/layout/categoria.html';        
         require_once 'view/layout/footer.html';
         require_once 'view/layout/scripts.php';
@@ -82,28 +64,70 @@ class NoticiaController
     {
         $data = new Noticia();
 
-        $data->usuario = trim($_POST['usuario'] );
-        $data->usuario = filter_var( $data->usuario, FILTER_SANITIZE_EMAIL);
-        $data->password = trim($_POST['password']);
-        $data->password = filter_var($data->password, FILTER_SANITIZE_STRING);
-        $data->nombre = trim($_POST['nombre'] );
-        $data->nombre = filter_var( $data->nombre, FILTER_SANITIZE_STRING);
-        $data->apellidos = trim($_POST['apellidos']);
-        $data->apellidos = filter_var($data->apellidos, FILTER_SANITIZE_STRING);
-        $data->acceso_privado = $_POST['acceso_privado'];
-        $data->is_admin = $_POST['is_admin'];
-  
+        $data->categoria_id = $_POST['categoria_id'];
+        $data->autor = $_POST['autor'];
+        $data->titular = $_POST['titular'];
+        $data->entradilla = $_POST['entradilla'];
+        $data->contenido = $_POST['contenido'];
+        $data->imagen = $_POST['imagen'];
+        $data->published = $_POST['published'];
+        $data->public = $_POST['public'];   
+          
         $this->model->registrar($data);
 
-        $usuarios = $this->model->Listar();
+        $noticias = $this->model->Listar();
+        $usuarios = $this->modelUsuario->Listar();
 
         require_once 'view/layout/headAdmin.html';
         require_once 'view/layout/navAdmin.html';
-        require_once 'view/layout/tablaUsuarios.html';
-        require_once 'view/modals/createUser.php';
-        require_once 'view/modals/editUser.php'; 
+        require_once 'view/layout/tablaNoticias.html';
+        require_once 'view/modals/createNews.php';
+        require_once 'view/modals/editNews.php';
+        require_once 'view/modals/deleteNews.php'; 
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html';
 
-    }
+    }//end function crearNoticia
+
+    public function ajaxNoticia()
+    {
+        
+        $noticia = $this->model->ObtenerNoticia($_GET['id']);
+
+        $data = json_encode($noticia);
+
+        echo $data;
+    
+    }//end function ajaxNoticia
+
+    public function editarNoticia()
+    {
+        $data = new Noticia();
+
+        $data->id = $_POST['edit-id'];
+        $data->categoria_id = $_POST['edit-categoria_id'];
+        $data->titular = $_POST['edit-titular'];
+        $data->entradilla = $_POST['edit-entradilla'];
+        $data->contenido = $_POST['edit-contenido'];
+        $data->imagen = $_POST['edit-imagen'];
+        $data->published = $_POST['edit-published'];
+        $data->public = $_POST['edit-public'];   
+          
+        $this->model->actualizar($data);
+
+        $noticias = $this->model->Listar();
+        $usuarios = $this->modelUsuario->Listar();
+
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaNoticias.html';
+        require_once 'view/modals/createNews.php';
+        require_once 'view/modals/editNews.php';
+        require_once 'view/modals/deleteNews.php';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html'; 
+
+    }//end function editarNoticia
 
 
 }

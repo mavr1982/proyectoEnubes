@@ -32,7 +32,7 @@ class Noticia
 		{
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM noticias");
+			$stm = $this->pdo->prepare("SELECT * FROM noticias ORDER BY id DESC");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -56,7 +56,7 @@ class Noticia
 		}
 	}//end function Obtener
 
-	public function Eliminar($id)
+	public function borrar($id)
 	{
 		try 
 		{
@@ -70,15 +70,15 @@ class Noticia
 		}
 	}
 
-	public function Actualizar($data)
+	public function actualizar($data)
 	{
 		try 
 		{
 			$sql = "UPDATE noticias SET 
 						categoria_id	= ?, 
 						titular	        = ?,
-                        fecha	        = ?,
-						contenido       = ?, 
+						contenido       = ?,
+						entradilla		= ?, 
 						imagen			= ?,
 						published		= ?,
 						public			= ?
@@ -89,8 +89,8 @@ class Noticia
 				    array(
                         $data->categoria_id, 
                         $data->titular,
-                        $data->fecha,
                         $data->contenido,
+                        $data->entradilla,
                         $data->imagen,
                         $data->published,
                         $data->public,
@@ -117,7 +117,7 @@ class Noticia
                     $data->categoria_id, 
                     $data->titular,
                     $data->entradilla,
-                    $data->fecha,
+                    NULL,
                     $data->contenido,
                     '../assets/images/' . $data->imagen,
                     $data->published,
@@ -147,8 +147,15 @@ class Noticia
 	public function ObtenerUltima()
 	{
 		try{
+			session_start();
+			if(isset($_SESSION['acceso_privado']) && ($_SESSION['acceso_privado'] == 1)){
+				$sql = "SELECT * FROM noticias WHERE published=1 ORDER BY id DESC LIMIT 1";
+			} else {
+				$sql = "SELECT * FROM noticias WHERE public=1 AND published=1 ORDER BY id DESC LIMIT 1";
+			}
+
 			$stm = $this->pdo
-			->prepare("SELECT * FROM noticias WHERE published=1 ");			          
+			->prepare($sql);			          
 
 			$stm->execute();
 			return $stm->fetch(PDO::FETCH_OBJ);

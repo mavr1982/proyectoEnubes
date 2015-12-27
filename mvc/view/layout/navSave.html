@@ -1,0 +1,55 @@
+<nav class="navbar navbar-static">
+   <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"  ><b>Inicio</b></a>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">  
+          <li><a href="#">eNubes.com</a></li>
+          <li><a href="?c=index&a=panelAdmin">Admin</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Channels</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Sub-link</a></li>
+              <li><a href="#">Sub-link</a></li>
+              <li><a href="#">Sub-link</a></li>
+              <li><a href="#">Sub-link</a></li>
+              
+            </ul>
+          </li> 
+        </ul>
+        <ul class="nav navbar-right navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+            <ul class="dropdown-menu" style="padding:12px;">
+                <form class="form-inline">
+     				<button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+                </form>
+             </ul>
+          </li>
+          <?php if(isset($_SESSION['nombre'])): ?>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i> <?php print $_SESSION['nombre']; ?></a>
+            <ul class="dropdown-menu">
+              <li><a data-toggle="modal" href="?c=index&a=panelAdmin">Panel admin</a></li>
+              <li class="divider"></li>
+              <li><a href="?c=index&a=logout">Logout</a></li>
+             </ul>
+          </li><!-- end class dropdown -->
+          <?php else: ?>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a data-toggle="modal" href="#exampleModal">Login</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Registro</a></li>
+             </ul>
+          </li><!-- end class dropdown -->
+          <?php endif; ?>
+        </ul>
+      </div>
+    </div>
+</nav><!-- /.navbar -->
