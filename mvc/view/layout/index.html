@@ -29,15 +29,17 @@
                   </div>
                   
                   <hr>
+                  <?php if(isset($_SESSION["is_admin"]) && ($_SESSION["is_admin"] == 1)): ?>
                   
                   <h3>Últimas conexiones</h3>
+                  <?php foreach ($logins as $item): ?>
                   
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> John Chapman</a></h5>
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Max Axleton</a></h5>
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Devin Skelly</a></h5>
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Katie Kowalski</a></h5>
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Amet Deberge</a></h5>
-                                  
+                    <h5><i class="glyphicon glyphicon-user"></i> <?php print $item->nombre; ?></h5>
+
+                  <?php endforeach; ?>
+                  
+                  <?php endif; ?>
+
                </div> 
                </div><!--/panel-->
           </div><!--/end columna izquierda-->

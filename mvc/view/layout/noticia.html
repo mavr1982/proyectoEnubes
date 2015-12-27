@@ -33,20 +33,16 @@
                   </div>
                   
                   <hr>
+                  <?php if(isset($_SESSION["is_admin"]) && ($_SESSION["is_admin"] == 1)): ?>
                   
-                  <h3>Top Members</h3>
+                  <h3>Últimas conexiones</h3>
+                  <?php foreach ($logins as $item): ?>
                   
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> John Chapman</a></h5>
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Max Axleton</a></h5>
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Devin Skelly</a></h5>
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Katie Kowalski</a></h5>
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Amet Deberge</a></h5>
-                
-                  <hr>  
+                    <h5><i class="glyphicon glyphicon-user"></i> <?php print $item->nombre; ?></h5>
+
+                  <?php endforeach; ?>
                   
-                  <img class="img-responsive" src="//placehold.it/300x200/FFF">    
-                  
-                  
+                  <?php endif; ?>
                   
                </div> 
                </div><!--/panel-->
@@ -58,7 +54,7 @@
           <div class="panel-heading" style="background-color:#111;color:#fff;">TITULARES</div>   
                 <div class="panel-body">
                   
-                  
+                
                   <!-- noticia -->
                   <div class="row">
                   <div class="col-md-12">
@@ -70,7 +66,7 @@
                     <strong><?php echo $noticia->titular; ?></strong>
                     </p>
                     
-                    <div class="text-muted"><p><small><?php echo $noticia->fecha; ?> / Wilson Traiker</small></p>
+                    <div class="text-muted"><p><small><?php echo $noticia->fecha; ?> / <?php echo $noticia->nombre_autor; ?></small></p>
                     </div>                    
                   </div> 
 

@@ -46,9 +46,14 @@ class NoticiaController
         require_once 'view/layout/scripts.php';
     }
 
-    public function categoria($categoria_id)
+    public function categoria()
     {
-        $noticias = $this->model->ObtenerTodasCategoria($_REQUEST['id']);
+        session_start();
+        if(isset($_SESSION["acceso_privado"]) && ($_SESSION["acceso_privado"] == 1)){
+            $noticias = $this->model->ObtenerTodasCategoria($_REQUEST['id']);
+        }else {
+            $noticias = $this->model->ObtenerTodasPublicasCategoria($_REQUEST['id']);   
+        }
 
         require_once 'view/layout/head.html';
         require_once 'view/layout/nav.html';

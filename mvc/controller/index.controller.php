@@ -20,20 +20,29 @@ class IndexController
     
     public function Index()
     {
-        
+        session_start();
         if(isset($_SESSION["acceso_privado"]) && ($_SESSION["acceso_privado"] == 1)){
 
+            $ultimaNoticia = $this->modelNoticia->ObtenerUltima(); 
+            $cine = $this->modelNoticia->ObtenerTodasCategoria(1);
+            $musica = $this->modelNoticia->ObtenerTodasCategoria(2);
+            $libros = $this->modelNoticia->ObtenerTodasCategoria(3); 
+            $deportes = $this->modelNoticia->ObtenerTodasCategoria(4);
+
+            if(isset($_SESSION["is_admin"]) && ($_SESSION["is_admin"] == 1)){
+                $logins = $this->modelSesiones->ultimasSesiones();
+            }
 
         } else {
 
-            //$ultimaNoticia = $this->modelNoticia->ObtenerUltimaPublica(); 
-            $ultimaNoticia = $this->modelNoticia->ObtenerUltima(); 
+            $ultimaNoticia = $this->modelNoticia->ObtenerUltimaPublica();
+            $cine = $this->modelNoticia->ObtenerTodasPublicasCategoria(1);
+            $musica = $this->modelNoticia->ObtenerTodasPublicasCategoria(2);
+            $libros = $this->modelNoticia->ObtenerTodasPublicasCategoria(3); 
+            $deportes = $this->modelNoticia->ObtenerTodasPublicasCategoria(4);
+            
         }
 
-        $cine = $this->modelNoticia->ObtenerTodasCategoria(1);
-        $musica = $this->modelNoticia->ObtenerTodasCategoria(2);
-        $libros = $this->modelNoticia->ObtenerTodasCategoria(3); 
-        $deportes = $this->modelNoticia->ObtenerTodasCategoria(4);
         
         require_once 'view/layout/head.html';
         require_once 'view/layout/nav.html';

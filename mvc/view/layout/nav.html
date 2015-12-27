@@ -10,7 +10,7 @@
         <ul class="nav navbar-right navbar-nav">
           <?php if(isset($_SESSION['nombre'])): ?>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i> <?php print $_SESSION['nombre']; ?> -pr<?php print $_SESSION['acceso_privado']; ?></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i> <?php print $_SESSION['nombre']; ?></a>
             <ul class="dropdown-menu">
               <li><a data-toggle="modal" href="?c=index&a=panelAdmin">Panel admin</a></li>
               <li class="divider"></li>

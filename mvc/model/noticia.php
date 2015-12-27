@@ -47,7 +47,10 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			          ->prepare("SELECT * FROM noticias WHERE id = ?");			          
+			          ->prepare("SELECT n.*, CONCAT(u.nombre, ' ', u.apellidos) AS nombre_autor
+			          			 FROM noticias n
+			          			 INNER JOIN usuarios u ON n.autor=u.id 
+			          			 WHERE id = ?");			          
 
 			$stm->execute(array($id));
 			return $stm->fetch(PDO::FETCH_OBJ);
@@ -147,13 +150,9 @@ class Noticia
 	public function ObtenerUltima()
 	{
 		try{
-			session_start();
-			if(isset($_SESSION['acceso_privado']) && ($_SESSION['acceso_privado'] == 1)){
-				$sql = "SELECT * FROM noticias WHERE published=1 ORDER BY id DESC LIMIT 1";
-			} else {
-				$sql = "SELECT * FROM noticias WHERE public=1 AND published=1 ORDER BY id DESC LIMIT 1";
-			}
-
+			
+			$sql = "SELECT * FROM noticias WHERE published=1 ORDER BY id DESC LIMIT 1";
+			
 			$stm = $this->pdo
 			->prepare($sql);			          
 
@@ -188,7 +187,7 @@ class Noticia
 		} catch (Exception $e){
 			die($e->getMessage());
 		}
-	}//end function ObtenerUltimaPublicaCategoria
+	}//end function ObtenerUltimaCategoria
 
 	public function ObtenerTodasCategoria($categoria_id)
 	{
@@ -201,20 +200,36 @@ class Noticia
 		} catch (Exception $e){
 			die($e->getMessage());
 		}
-	}//end function ObtenerUltimaPublicaCategoria
+	}//end function ObtenerTodasCategoria
+
+	public function ObtenerTodasPublicasCategoria($categoria_id)
+	{
+		try{
+			$stm = $this->pdo
+			->prepare("SELECT noticias.*, categorias.nombre as nombreCategoria FROM noticias INNER JOIN categorias on noticias.categoria_id=categorias.id WHERE categoria_id = ? AND published=1 AND public=1 ORDER BY id DESC");			          
+
+			$stm->execute(array($categoria_id));
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		} catch (Exception $e){
+			die($e->getMessage());
+		}
+	}//end function ObtenerTodasPublicasCategoria
 
 	public function ObtenerNoticia($id)
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT * FROM noticias WHERE id = ?");			          
+			->prepare("SELECT n.*, CONCAT(u.nombre, ' ', u.apellidos) AS nombre_autor
+			           FROM noticias n
+			           INNER JOIN usuarios u ON n.autor=u.id 
+			           WHERE n.id = ?");			          
 
 			$stm->execute(array($id));
 			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e){
 			die($e->getMessage());
 		}
-	}//end function ObtenerUltimaPublicaCategoria
+	}//end function ObtenerNoticia
 
 	public function registrarVisita($noticia_id, $categoria_id)
     {
