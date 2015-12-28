@@ -1,5 +1,23 @@
-    <?php
+<?php
 require_once 'model/database.php';
+require_once "recaptchalib.php";
+
+// tu clave secreta
+$secret = "6LfR8BMTAAAAAIshuyGkLrLTV_b2siXHya5O4e_6";
+ 
+// respuesta vacía
+$response = null;
+ 
+// comprueba la clave secreta
+$reCaptcha = new ReCaptcha($secret);
+
+// si se detecta la respuesta como enviada
+if ($_POST["g-recaptcha-response"]) {
+$response = $reCaptcha->verifyResponse(
+        $_SERVER["REMOTE_ADDR"],
+        $_POST["g-recaptcha-response"]
+    );
+}
 
 $controller = 'index';
 

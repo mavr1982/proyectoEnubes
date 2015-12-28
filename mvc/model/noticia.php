@@ -138,7 +138,13 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT * FROM noticias WHERE public=1 AND published=1 ORDER BY id DESC LIMIT 1");			          
+			->prepare("SELECT n.*, CONCAT(u.nombre, ' ', u.apellidos) AS nombre_autor
+					   FROM noticias n
+					   INNER JOIN usuarios u ON n.autor=u.id
+					   WHERE n.public=1
+					   AND n.published=1
+					   ORDER BY n.id DESC
+					   LIMIT 1");			          
 
 			$stm->execute();
 			return $stm->fetch(PDO::FETCH_OBJ);
@@ -151,7 +157,12 @@ class Noticia
 	{
 		try{
 			
-			$sql = "SELECT * FROM noticias WHERE published=1 ORDER BY id DESC LIMIT 1";
+			$sql = "SELECT n.*, CONCAT(u.nombre, ' ', u.apellidos) AS nombre_autor
+					   FROM noticias n
+					   INNER JOIN usuarios u ON n.autor=u.id
+					   WHERE n.published=1
+					   ORDER BY n.id DESC
+					   LIMIT 1";
 			
 			$stm = $this->pdo
 			->prepare($sql);			          
@@ -193,7 +204,14 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT noticias.*, categorias.nombre as nombreCategoria FROM noticias INNER JOIN categorias on noticias.categoria_id=categorias.id WHERE categoria_id = ? AND published=1 ORDER BY id DESC");			          
+			->prepare("SELECT n.*, c.nombre as nombreCategoria,
+					   CONCAT(u.nombre, ' ', u.apellidos) AS nombre_autor
+					   FROM noticias n
+					   INNER JOIN categorias c on n.categoria_id=c.id
+					   INNER JOIN usuarios u ON n.autor=u.id 
+					   WHERE n.categoria_id = ?
+					   AND n.published=1
+					   ORDER BY n.id DESC");			          
 
 			$stm->execute(array($categoria_id));
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -206,7 +224,15 @@ class Noticia
 	{
 		try{
 			$stm = $this->pdo
-			->prepare("SELECT noticias.*, categorias.nombre as nombreCategoria FROM noticias INNER JOIN categorias on noticias.categoria_id=categorias.id WHERE categoria_id = ? AND published=1 AND public=1 ORDER BY id DESC");			          
+			->prepare("SELECT n.*, c.nombre as nombreCategoria,
+					   CONCAT(u.nombre, ' ', u.apellidos) AS nombre_autor
+					   FROM noticias n
+					   INNER JOIN categorias c on n.categoria_id=c.id
+					   INNER JOIN usuarios u ON n.autor=u.id 
+					   WHERE n.categoria_id = ?
+					   AND n.published=1
+					   AND n.public=1
+					   ORDER BY n.id DESC");			          
 
 			$stm->execute(array($categoria_id));
 			return $stm->fetchAll(PDO::FETCH_OBJ);

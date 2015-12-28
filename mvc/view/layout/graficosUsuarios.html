@@ -1,0 +1,82 @@
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Usuarios
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="?c=index&a=panelAdmin">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-bar-chart-o"></i> Estadísticas
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4>Logins por usuario</h4>
+                    </div>
+                    <div class="col-lg-12">
+                        <canvas id="graficoUsuarios" width="800" height="300"></canvas>
+                    </div>                    
+                </div>
+
+                <hr>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+ 
+ <script src='../assets/js/Chart.js'></script>
+
+ <script>
+
+ var LineChartNews = {
+    labels: [<?php echo $usuario; ?>],
+    datasets: [
+        {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [ <?php echo $total; ?> ]
+        }
+    ]
+};
+
+var myLineChartNews = new Chart(document.getElementById("graficoUsuarios").getContext("2d")).Line(LineChartNews, {scaleFontSize : 13, scaleFontColor : "red"});
+ 
+
+</script>
+
+</body>
+
+
+</html>

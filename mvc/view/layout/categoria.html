@@ -64,7 +64,7 @@
                       <a href="?c=noticia&a=noticia&id=<?php echo $noticias[0]->id; ?>">
                       <p id="fittext1"><strong><?php echo $noticias[0]->titular; ?></strong></p>
                       </a>
-                      <div class="text-muted"><p><small><?php echo $noticias[0]->fecha; ?> / Wilson Traiker</small></p>
+                      <div class="text-muted"><p><small><?php echo $noticias[0]->fecha; ?> / <?php echo $noticias[0]->nombre_autor; ?></small></p>
                       </div>                    
                     </div> 
 
@@ -100,9 +100,9 @@
               	<div class="panel panel-default" id="sidebar">
                 <div class="panel-heading" style="background-color:#888;color:#fff;">Categorías</div> 
                 <div class="panel-body">
-      			    <div class="media">
+                <div class="media">
                     <a class="pull-left" href="?c=noticia&a=categoria&id=1">
-                      <img class="media-object" src="http://placehold.it/80/F0F0F0">
+                      <img class="media-object" src="../assets/images/cine.jpg">
                     </a>
                     <div class="media-body">
                       <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=1"><strong>CINE</strong></a></h5>
@@ -111,7 +111,7 @@
                   </div>
                   <div class="media">
                     <a class="pull-left" href="?c=noticia&a=categoria&id=4">
-                      <img class="media-object" src="http://placehold.it/80/F0F0F0">
+                      <img class="media-object" src="../assets/images/sport.jpg">
                     </a>
                     <div class="media-body">
                       <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=4"><strong>DEPORTE</strong></a></h5>
@@ -120,7 +120,7 @@
                   </div>
                   <div class="media">
                     <a class="pull-left" href="?c=noticia&a=categoria&id=3">
-                      <img class="media-object" src="http://placehold.it/80/F0F0F0">
+                      <img class="media-object" src="../assets/images/books.jpg">
                     </a>
                     <div class="media-body">
                       <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=3"><strong>LIBROS</strong></a></h5>
@@ -129,7 +129,7 @@
                   </div>
                   <div class="media">
                     <a class="pull-left" href="?c=noticia&a=categoria&id=2">
-                      <img class="media-object" src="http://placehold.it/80/F0F0F0">
+                      <img class="media-object" src="../assets/images/music.jpg">
                     </a>
                     <div class="media-body">
                       <h5 class="media-heading"><a href="?c=noticia&a=categoria&id=2"><strong>MÚSICA</strong></a></h5>

@@ -50,5 +50,40 @@ class EstadisticaController
 
     }//end function tablaVisitas
 
+    public function tablaEstadisticaUsuarios()
+    {
+
+        $totalUsuarios = $this->model->totalUsuarios();
+        $totalLogins = $this->model->totalLogins();
+        $todosUsuarios = $this->model->todosUsuarios();
+
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/tablaEstadisticaUsuarios.html';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html';   
+
+    }//end function tablaEstadisticaUsuarios
+
+    public function graficosUsuarios()
+    {
+
+        $todosUsuarios = $this->model->todosUsuarios();
+
+        $usuario = '';
+        $logins = '';
+        foreach ($todosUsuarios as $key ) {
+            $usuario .= "'" . $key->usuario . "',";
+            $total .= "'" . $key->total . "',";
+        }
+
+        require_once 'view/layout/headAdmin.html';
+        require_once 'view/layout/navAdmin.html';
+        require_once 'view/layout/graficosUsuarios.html';
+        require_once 'view/layout/footerAdmin.html';
+        require_once 'view/layout/scriptsAdmin.html';   
+
+    }//end function graficosaUsuarios
+
 
 }

@@ -18,7 +18,7 @@
             </select>
           </div>
           <div class="form-group">
-          <label for="autor" class="control-label">Categoria</label>
+          <label for="autor" class="control-label">Autor</label>
             <select class="form-control" id="autor" name="autor">
               <?php foreach ($usuarios as $item): ?>
               <option value="<?php print $item->id; ?>"><?php print $item->nombre; ?></option>

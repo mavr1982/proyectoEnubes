@@ -162,4 +162,60 @@ class Estadistica
 		}
 	}//end function totalNoticias
 
+	public function totalUsuarios()
+	{
+		try
+		{
+			
+			$stm = $this->pdo->prepare("SELECT COUNT(*) AS total
+										FROM usuarios u
+										");
+			$stm->execute();
+
+			return $stm->fetch(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}//end function totalUsuarios
+
+	public function totalLogins()
+	{
+		try
+		{
+			
+			$stm = $this->pdo->prepare("SELECT COUNT(*) AS total
+										FROM logins l
+										");
+			$stm->execute();
+
+			return $stm->fetch(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}//end function totalLogins
+
+	public function todosUsuarios()
+	{
+		try
+		{
+			
+			$stm = $this->pdo->prepare("SELECT u.usuario, u.id AS ident, MAX(l.fecha_login) AS fecha_login,
+										(SELECT COUNT(*) FROM logins l WHERE l.usuario_id=u.id GROUP BY l.usuario_id) AS total
+										FROM logins l
+										INNER JOIN usuarios u ON u.id=l.usuario_id
+										GROUP BY u.id");
+			$stm->execute();
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}//end function todosUsuarios
+
 }//end class

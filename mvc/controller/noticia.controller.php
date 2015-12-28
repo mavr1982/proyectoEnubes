@@ -40,6 +40,7 @@ class NoticiaController
         require_once 'view/layout/nav.html';
         require_once 'view/layout/header.html';
         require_once 'view/modals/login.php';
+        require_once 'view/modals/registro.php';
         require_once 'view/modals/errorLogin.php';
         require_once 'view/layout/noticia.html';
         require_once 'view/layout/footer.html';
@@ -59,6 +60,7 @@ class NoticiaController
         require_once 'view/layout/nav.html';
         require_once 'view/layout/header.html';
         require_once 'view/modals/login.php';
+        require_once 'view/modals/registro.php';
         require_once 'view/modals/errorLogin.php';
         require_once 'view/layout/categoria.html';        
         require_once 'view/layout/footer.html';
